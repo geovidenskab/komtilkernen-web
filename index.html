@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kom til kernen — Lyt til Jorden med Inge Lehmann</title>
+<meta name="description" content="Et undervisningsprojekt der lader gymnasieelever genopleve opdagelsen af Jordens indre kerne med telefoner som seismografer og 1936 som scenografi.">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,300;1,6..72,400&family=DM+Sans:wght@400;500;600&display=block" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0a1628;
+    --navy2:  #0f1f3d;
+    --navy3:  #152647;
+    --cyan:   #00b4d8;
+    --cyan2:  #0096c7;
+    --orange: #ef8a17;
+    --sand:   #f5f0e8;
+    --sand2:  rgba(245,240,232,.7);
+    --sand3:  rgba(245,240,232,.4);
+    --green:  #2a9d8f;
+    --border: rgba(255,255,255,.07);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--sand);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .9rem 2rem;
+    background: rgba(10,22,40,.85);
+    backdrop-filter: blur(12px);
+    border-bottom: .5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .85rem; font-weight: 600;
+    color: var(--sand); text-decoration: none;
+    letter-spacing: .03em;
+    display: flex; align-items: center; gap: .4rem;
+  }
+  .nav-logo .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); display: inline-block; }
+  .nav-links { list-style: none; display: flex; gap: 1.8rem; }
+  .nav-links a { color: var(--sand3); text-decoration: none; font-size: .8rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--sand); }
+  .nav-cta {
+    background: var(--cyan); color: var(--navy);
+    border: none; border-radius: 6px;
+    padding: .45rem 1rem; font-size: .8rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: .85; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 6rem 2rem 4rem;
+    overflow: hidden;
+  }
+  #hero-canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    opacity: .18; pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: .7rem; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--cyan);
+    margin-bottom: 1.4rem; position: relative;
+  }
+  .hero h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 300; line-height: 1.05;
+    letter-spacing: -.02em;
+    color: var(--sand);
+    position: relative;
+    margin-bottom: .6rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--cyan); }
+  .hero-sub {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 300; font-style: italic;
+    color: var(--sand2);
+    margin-bottom: 1.8rem; position: relative;
+  }
+  .hero-desc {
+    max-width: 560px; font-size: .95rem;
+    color: var(--sand3); line-height: 1.7;
+    margin: 0 auto 2.4rem; position: relative;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; }
+  .btn-primary {
+    background: var(--cyan); color: var(--navy);
+    padding: .7rem 1.8rem; border-radius: 8px;
+    font-weight: 600; font-size: .9rem;
+    text-decoration: none; transition: opacity .2s;
+    display: inline-flex; align-items: center; gap: .4rem;
+  }
+  .btn-primary:hover { opacity: .85; }
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,.15); color: var(--sand2);
+    padding: .7rem 1.8rem; border-radius: 8px;
+    font-size: .9rem; text-decoration: none;
+    transition: border-color .2s, color .2s;
+    display: inline-flex; align-items: center; gap: .4rem;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,.35); color: var(--sand); }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: .4rem;
+    color: var(--sand3); font-size: .65rem; letter-spacing: .1em;
+  }
+  .scroll-arrow { width: 1px; height: 32px; background: linear-gradient(to bottom, transparent, var(--sand3)); }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: .65rem; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--cyan);
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300; line-height: 1.15;
+    margin-bottom: 1.4rem; letter-spacing: -.01em;
+  }
+  h2 em { font-style: italic; color: var(--cyan); }
+  .lead {
+    font-size: 1.05rem; line-height: 1.75;
+    color: var(--sand2); max-width: 640px;
+    margin-bottom: 1.4rem;
+  }
+  p { color: var(--sand3); line-height: 1.75; margin-bottom: 1rem; }
+
+  /* divider */
+  .divider {
+    border: none; border-top: .5px solid var(--border);
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  /* ── PROJEKT-SEKTION ── */
+  .projekt-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .projekt-chips {
+    display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 2rem;
+  }
+  .chip {
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: .3rem .8rem; font-size: .75rem; color: var(--sand3);
+  }
+  .chip.cyan { border-color: rgba(0,180,216,.3); color: var(--cyan); }
+
+  .seismo-visual {
+    background: var(--navy2); border-radius: 12px;
+    border: .5px solid var(--border);
+    padding: 1.5rem; position: relative; overflow: hidden;
+  }
+  .seismo-visual canvas { width: 100%; display: block; }
+  .seismo-label {
+    font-size: .65rem; color: var(--sand3); text-align: center;
+    margin-top: .6rem; letter-spacing: .06em;
+  }
+
+  /* SANS chips */
+  .sans-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; margin-top: 1.8rem;
+  }
+  .sans-item {
+    background: rgba(255,255,255,.03); border: .5px solid var(--border);
+    border-radius: 8px; padding: 1rem 1.2rem;
+  }
+  .sans-letter { font-size: 1.4rem; font-family: 'Newsreader', serif; color: var(--cyan); font-style: italic; margin-bottom: .2rem; }
+  .sans-word { font-size: .85rem; font-weight: 600; color: var(--sand); margin-bottom: .15rem; }
+  .sans-desc { font-size: .75rem; color: var(--sand3); line-height: 1.5; }
+
+  /* ── STATUS-SEKTION ── */
+  .status-section { background: var(--navy2); padding: 5rem 2rem; }
+  .status-inner { max-width: 1100px; margin: 0 auto; }
+  .status-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem; margin-top: 2.5rem;
+  }
+  .status-card {
+    background: var(--navy3); border: .5px solid var(--border);
+    border-radius: 10px; padding: 1.6rem 1.4rem;
+    display: flex; flex-direction: column; gap: .6rem;
+  }
+  .status-badge {
+    display: inline-flex; align-items: center; gap: .35rem;
+    font-size: .65rem; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; padding: .25rem .6rem;
+    border-radius: 4px; width: fit-content;
+  }
+  .badge-live { background: rgba(42,157,143,.15); color: var(--green); border: .5px solid rgba(42,157,143,.3); }
+  .badge-build { background: rgba(239,138,23,.12); color: var(--orange); border: .5px solid rgba(239,138,23,.25); }
+  .badge-plan { background: rgba(255,255,255,.05); color: var(--sand3); border: .5px solid var(--border); }
+  .badge-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+  .status-card h3 { font-size: 1rem; font-weight: 600; color: var(--sand); }
+  .status-card p { font-size: .8rem; color: var(--sand3); line-height: 1.6; margin: 0; }
+  .status-card a {
+    margin-top: auto; font-size: .78rem; color: var(--cyan);
+    text-decoration: none; display: inline-flex; align-items: center; gap: .3rem;
+  }
+  .status-card a:hover { text-decoration: underline; }
+
+  .timeline {
+    margin-top: 3rem; display: flex; flex-direction: column; gap: 0;
+    border-left: 1px solid var(--border); padding-left: 1.5rem; margin-left: 1rem;
+  }
+  .timeline-item { position: relative; padding-bottom: 1.8rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -1.5rem; top: .4rem;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--navy2); border: 1.5px solid var(--border);
+    transform: translateX(-4px);
+  }
+  .timeline-item.active::before { background: var(--cyan); border-color: var(--cyan); }
+  .timeline-year { font-size: .7rem; color: var(--cyan); font-weight: 600; letter-spacing: .06em; }
+  .timeline-desc { font-size: .88rem; color: var(--sand2); margin-top: .15rem; }
+
+  /* ── PHILIP-SEKTION ── */
+  .philip-grid {
+    display: grid; grid-template-columns: 1fr 2fr;
+    gap: 4rem; align-items: start;
+  }
+  .philip-card {
+    background: var(--navy2); border: .5px solid var(--border);
+    border-radius: 12px; padding: 2rem; text-align: center;
+  }
+  .philip-avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan2) 0%, var(--navy3) 100%);
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Newsreader', serif; font-size: 2rem; color: var(--sand);
+  }
+  .philip-name { font-size: 1rem; font-weight: 600; margin-bottom: .2rem; }
+  .philip-title { font-size: .78rem; color: var(--sand3); line-height: 1.5; }
+  .philip-prize {
+    margin-top: 1rem; padding: .6rem .8rem;
+    background: rgba(239,138,23,.08); border: .5px solid rgba(239,138,23,.2);
+    border-radius: 6px; font-size: .72rem; color: var(--orange); line-height: 1.5;
+  }
+
+  /* ── KONTAKT-SEKTION ── */
+  .contact-section {
+    background: linear-gradient(135deg, var(--navy2) 0%, var(--navy3) 100%);
+    padding: 5rem 2rem;
+  }
+  .contact-inner {
+    max-width: 700px; margin: 0 auto; text-align: center;
+  }
+  .contact-inner h2 { margin-bottom: .8rem; }
+  .contact-inner .lead { margin: 0 auto 2.4rem; }
+  .contact-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .contact-meta {
+    margin-top: 2.5rem; font-size: .78rem; color: var(--sand3);
+  }
+  .contact-meta a { color: var(--sand2); text-decoration: none; }
+  .contact-meta a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.5rem 2rem; text-align: center;
+    font-size: .72rem; color: var(--sand3);
+    border-top: .5px solid var(--border);
+    background: var(--navy);
+  }
+  footer a { color: var(--sand3); text-decoration: none; }
+  footer a:hover { color: var(--sand); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: .8rem 1.2rem; }
+    .nav-links { display: none; }
+    .projekt-grid, .philip-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .status-cards { grid-template-columns: 1fr; }
+    .sans-grid { grid-template-columns: 1fr; }
+    section { padding: 3.5rem 1.2rem; }
+    .status-section, .contact-section { padding: 3.5rem 1.2rem; }
+    .hero h1 { font-size: clamp(2.5rem, 12vw, 5rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    Kom til kernen<span class="dot"></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#projekt">Projektet</a></li>
+    <li><a href="#status">Status</a></li>
+    <li><a href="#philip">Philip</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-cta">Kontakt Philip</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-eyebrow">Et projekt om opdagelse og naturvidenskab</div>
+  <h1>Kom til <em>kernen</em></h1>
+  <div class="hero-sub">Lyt til Jorden med Inge Lehmann</div>
+  <p class="hero-desc">
+    Et undervisningsprojekt der lader gymnasieelever genopleve opdagelsen af Jordens indre kerne —
+    med telefoner som seismografer og 1936 som scenografi.
+  </p>
+  <div class="hero-actions">
+    <a href="https://geo.sg.dk/seismograf/" target="_blank" class="btn-primary">
+      Se demo <span>→</span>
+    </a>
+    <a href="#projekt" class="btn-ghost">Læs mere</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJEKT -->
+<section id="projekt">
+  <div class="projekt-grid">
+    <div>
+      <div class="section-label">Projektet</div>
+      <h2>Opdagelsen der<br><em>forandrede</em> geofysikken</h2>
+      <p class="lead">
+        I 1936 beviste den danske seismolog Inge Lehmann, at Jordens indre rum ikke er ensartet —
+        der er en fast indre kerne. Det var en opdagelse alle andre havde overset.
+      </p>
+      <p>
+        "Kom til kernen" guider gymnasieelever igennem den samme opdagelsesproces.
+        De analyserer seismiske bølger, opdager skyggezonen, og opstiller en hypotese —
+        støttet af egne målinger med telefonen som seismograf.
+      </p>
+      <p>
+        Materialet er forankret i SANS-modellen: Følelser, Fantasi, Fortællinger og Fællesskab
+        som veje til dybere naturvidenskabelig forståelse.
+      </p>
+      <div class="projekt-chips">
+        <span class="chip cyan">Seismisk visualisering</span>
+        <span class="chip cyan">Live seismograf-netværk</span>
+        <span class="chip cyan">Narrativt forløb</span>
+        <span class="chip">Gymnasiet</span>
+        <span class="chip">Fysik · Geovidenskab · Naturgeografi</span>
+      </div>
+    </div>
+    <div>
+      <div class="seismo-visual">
+        <canvas id="proj-canvas" height="120"></canvas>
+        <div class="seismo-label">Syntetisk seismogram — 10 bølgefaser, 3 jordmodeller (1900–1936)</div>
+      </div>
+      <div class="sans-grid" style="margin-top:1.2rem">
+        <div class="sans-item">
+          <div class="sans-letter">F</div>
+          <div class="sans-word">Følelser</div>
+          <div class="sans-desc">Lehmanns frustrationer og gennembrud skaber en menneskelig indgang til fagstoffet.</div>
+        </div>
+        <div class="sans-item">
+          <div class="sans-letter">F</div>
+          <div class="sans-word">Fantasi</div>
+          <div class="sans-desc">"Hvad nu hvis der er en fast kerne?" Hypotesemageri som faglig drivkraft.</div>
+        </div>
+        <div class="sans-item">
+          <div class="sans-letter">F</div>
+          <div class="sans-word">Fortælling</div>
+          <div class="sans-desc">1936 som scenografi. Eleverne følger Lehmann — ikke lærebogen.</div>
+        </div>
+        <div class="sans-item">
+          <div class="sans-letter">F</div>
+          <div class="sans-word">Fællesskab</div>
+          <div class="sans-desc">Klasserummet som seismografnetværk. Fælles data, fælles analyse.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- STATUS -->
+<div class="status-section" id="status">
+  <div class="status-inner">
+    <div class="section-label">Hvad er bygget</div>
+    <h2>Fra prototype<br><em>til platform</em></h2>
+
+    <div class="status-cards">
+      <div class="status-card">
+        <div class="status-badge badge-live"><span class="badge-dot"></span>Live</div>
+        <h3>Seismisk visualisering</h3>
+        <p>Tre historiske jordmodeller (1900, 1914, 1936). Ti seismiske faser med strålegange. Syntetiske seismogrammer med korrekte ankomsttider.</p>
+        <a href="https://geo.sg.dk/seismograf/" target="_blank">Prøv demo →</a>
+      </div>
+      <div class="status-card">
+        <div class="status-badge badge-live"><span class="badge-dot"></span>Live</div>
+        <h3>Live seismograf-netværk</h3>
+        <p>Telefoner som seismografer i klasserummet. WebSocket-netværk, auto-trigger, rejsetidskurve og hastighedsberegning. Bruges nu.</p>
+        <a href="https://geo.sg.dk/seismograf/" target="_blank">Prøv demo →</a>
+      </div>
+      <div class="status-card">
+        <div class="status-badge badge-build"><span class="badge-dot"></span>Under udvikling</div>
+        <h3>Narrativt forløb</h3>
+        <p>Den samlende elevrettede platform — Inge Lehmanns opdagelsesproces i seks kapitler, med visualisering og seismograf integreret.</p>
+        <span style="font-size:.78rem;color:var(--sand3);margin-top:auto;display:block;">Klar til pilot 2027</span>
+      </div>
+    </div>
+
+    <div style="margin-top:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
+      <div>
+        <div class="section-label" style="margin-bottom:.8rem">Tidsplan</div>
+        <div class="timeline">
+          <div class="timeline-item active">
+            <div class="timeline-year">2026</div>
+            <div class="timeline-desc">Forløbsside og landingsside. Pilot på Silkeborg Gymnasium. Fondsansøgning til Novo Nordisk Fonden.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2027</div>
+            <div class="timeline-desc">Bredere afprøvning på 5–10 gymnasier. Evaluering og videreudvikling.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2028</div>
+            <div class="timeline-desc">Masseeksperiment under Naturvidenskabsfestivalen. Tusindvis af elever hopper samtidig — og mærker Jordens svar.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:.8rem">Ambition</div>
+        <p class="lead" style="font-size:.9rem;margin-bottom:1rem">
+          Frit tilgængeligt undervisningsmateriale til alle gymnasier i Danmark.
+        </p>
+        <p>Materialet henvender sig til fysik, geovidenskab og naturgeografi på B- og A-niveau. Potentielt 10.000+ elever om året.</p>
+        <p>Budget: 1,5–3 mio. kr over 2–3 år. Primær ansøgning: Novo Nordisk Fonden (pulje: Projektstøtte til naturvidenskabelig uddannelse).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PHILIP -->
+<section id="philip">
+  <div class="philip-grid">
+    <div>
+      <div class="philip-card">
+        <div class="philip-avatar">P</div>
+        <div class="philip-name">Philip Kruse Jakobsen</div>
+        <div class="philip-title">
+          Lektor i fysik, naturgeografi og geovidenskab<br>
+          Silkeborg Gymnasium<br><br>
+          Ph.d. i fysisk oceanografi<br>og klimamodellering
+        </div>
+        <div class="philip-prize">
+          Novo Nordisk Fondens Naturvidenskabelige Gymnasielærerpris 2022
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">Hvem er bag</div>
+      <h2>Undervisning med<br><em>sans for mennesket</em></h2>
+      <p class="lead">
+        Philip Kruse Jakobsen er lektor og grundlæggeren af Sans Science —
+        et fagdidaktisk projekt der adresserer naturvidenskabsundervisningens
+        dobbelte krise: meningskrisen og AI-disruption.
+      </p>
+      <p>
+        Hans undervisning tager udgangspunkt i SANS-modellen: at Følelser, Fantasi,
+        Fortællinger og Fællesskab er adgangsveje til dyb naturvidenskabelig forståelse —
+        ikke pynt, men metode.
+      </p>
+      <p>
+        "Kom til kernen" er hans hidtil mest ambitiøse materiale. Det kombinerer
+        seismologi, videnskabshistorie og didaktisk design på en måde, der giver
+        gymnasieelever en oplevelse af, hvad det vil sige at opdage noget nyt.
+      </p>
+      <div style="margin-top:1.8rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="https://sans.science" target="_blank" class="btn-ghost" style="font-size:.82rem">
+          sans.science →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<div class="contact-section" id="kontakt">
+  <div class="contact-inner">
+    <div class="section-label" style="text-align:center">Kontakt</div>
+    <h2>Er du nysgerrig?</h2>
+    <p class="lead">
+      Jeg er i gang med at samle et netværk af samarbejdspartnere —
+      fagpersoner, institutioner og gymnasier der vil være med til
+      at forme projektet. Er det noget for dig?
+    </p>
+    <div class="contact-actions">
+      <a href="mailto:philip@sans.science?subject=Kom%20til%20kernen%20-%20samarbejde" class="btn-primary">
+        Skriv til Philip
+      </a>
+      <a href="https://sans.science" target="_blank" class="btn-ghost">
+        Om Sans Science
+      </a>
+    </div>
+    <div class="contact-meta">
+      <a href="mailto:philip@sans.science">philip@sans.science</a>
+      &nbsp;·&nbsp;
+      Silkeborg Gymnasium
+      &nbsp;·&nbsp;
+      <a href="https://sans.science" target="_blank">sans.science</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Kom til kernen — et Sans Science-projekt &nbsp;·&nbsp;
+  <a href="https://sans.science" target="_blank">sans.science</a>
+  &nbsp;·&nbsp; philip@sans.science
+</footer>
+
+<script>
+// ── Hero seismogram animation ──────────────────────────
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, t = 0;
+
+  function resize() {
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function noise(x) {
+    return Math.sin(x * 0.7) * 0.3
+         + Math.sin(x * 1.9) * 0.2
+         + Math.sin(x * 4.3) * 0.1;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    const numTraces = 5;
+    const spacing = h / (numTraces + 1);
+
+    for (let i = 0; i < numTraces; i++) {
+      const y0 = spacing * (i + 1);
+      const amp = 18 + i * 6;
+      const speed = 0.018 + i * 0.003;
+      const phaseOff = i * 2.1;
+      const eventX = (0.3 + i * 0.12) * w;
+      const eventSharpness = 60;
+
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(0,180,216,${0.4 - i * 0.05})`;
+      ctx.lineWidth = 1;
+
+      for (let px = 0; px < w; px++) {
+        const progress = (px - t * speed * w) / w;
+        const dist = px - eventX;
+        const envelope = Math.exp(-(dist * dist) / (2 * eventSharpness * eventSharpness));
+        const signal = amp * envelope * (Math.sin(dist * 0.18 + phaseOff) + noise(dist * 0.05));
+        const baseline = noise((px + t * 5 + phaseOff * 100) * 0.015) * 4;
+        const y = y0 + signal + baseline;
+        px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
+      }
+      ctx.stroke();
+    }
+
+    t += 0.3;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── Projekt seismogram (statisk) ─────────────────────
+(function() {
+  const canvas = document.getElementById('proj-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width = canvas.parentElement.clientWidth;
+  const h = canvas.height = 120;
+  const mid = h / 2;
+
+  ctx.strokeStyle = 'rgba(0,180,216,.7)';
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+
+  const events = [
+    { x: 0.12, amp: 8,  freq: 0.3 },
+    { x: 0.28, amp: 22, freq: 0.25 },
+    { x: 0.48, amp: 35, freq: 0.2 },
+    { x: 0.67, amp: 18, freq: 0.28 },
+    { x: 0.82, amp: 12, freq: 0.32 },
+  ];
+
+  for (let px = 0; px < w; px++) {
+    let y = mid;
+    events.forEach(ev => {
+      const dist = px - ev.x * w;
+      const env = Math.exp(-(dist * dist) / (2 * 900));
+      y += ev.amp * env * Math.sin(dist * ev.freq);
+    });
+    y += Math.sin(px * 0.08) * 1.5;
+    px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
+  }
+  ctx.stroke();
+
+  // Baseline
+  ctx.strokeStyle = 'rgba(255,255,255,.06)';
+  ctx.lineWidth = 0.5;
+  ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(w, mid); ctx.stroke();
+
+  // Phase labels
+  const labels = ['P', 'PP', 'PKP', 'PKiKP', 'PKIKP'];
+  events.forEach((ev, i) => {
+    ctx.fillStyle = 'rgba(0,180,216,.5)';
+    ctx.font = '9px DM Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(labels[i] || '', ev.x * w, 12);
+  });
+})();
+</script>
+</body>
+</html>
