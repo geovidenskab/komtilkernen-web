@@ -70,9 +70,20 @@
     text-align: center; padding: 6rem 2rem 4rem;
     overflow: hidden;
   }
-  #hero-canvas {
+  .hero-bg-img {
     position: absolute; inset: 0; width: 100%; height: 100%;
-    opacity: .18; pointer-events: none;
+    object-fit: cover; object-position: center center;
+    opacity: .72; pointer-events: none;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(5,10,22,.45) 0%,
+      rgba(5,10,22,.15) 40%,
+      rgba(5,10,22,.55) 100%
+    );
+    pointer-events: none;
   }
   .hero-eyebrow {
     font-size: .7rem; font-weight: 600; letter-spacing: .18em;
@@ -317,7 +328,8 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <canvas id="hero-canvas"></canvas>
+  <img class="hero-bg-img" src="lehmann-hero.jpg" alt="">
+  <div class="hero-overlay"></div>
   <div class="hero-eyebrow">Et projekt om opdagelse og naturvidenskab</div>
   <h1>Kom til <em>kernen</em></h1>
   <div class="hero-sub">Lyt til Jorden med Inge Lehmann</div>
@@ -536,59 +548,6 @@
 </footer>
 
 <script>
-// ── Hero seismogram animation ──────────────────────────
-(function() {
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  let w, h, t = 0;
-
-  function resize() {
-    w = canvas.width = canvas.offsetWidth;
-    h = canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  function noise(x) {
-    return Math.sin(x * 0.7) * 0.3
-         + Math.sin(x * 1.9) * 0.2
-         + Math.sin(x * 4.3) * 0.1;
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    const numTraces = 5;
-    const spacing = h / (numTraces + 1);
-
-    for (let i = 0; i < numTraces; i++) {
-      const y0 = spacing * (i + 1);
-      const amp = 18 + i * 6;
-      const speed = 0.018 + i * 0.003;
-      const phaseOff = i * 2.1;
-      const eventX = (0.3 + i * 0.12) * w;
-      const eventSharpness = 60;
-
-      ctx.beginPath();
-      ctx.strokeStyle = `rgba(0,180,216,${0.4 - i * 0.05})`;
-      ctx.lineWidth = 1;
-
-      for (let px = 0; px < w; px++) {
-        const progress = (px - t * speed * w) / w;
-        const dist = px - eventX;
-        const envelope = Math.exp(-(dist * dist) / (2 * eventSharpness * eventSharpness));
-        const signal = amp * envelope * (Math.sin(dist * 0.18 + phaseOff) + noise(dist * 0.05));
-        const baseline = noise((px + t * 5 + phaseOff * 100) * 0.015) * 4;
-        const y = y0 + signal + baseline;
-        px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
-      }
-      ctx.stroke();
-    }
-
-    t += 0.3;
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
 
 // ── Projekt seismogram (statisk) ─────────────────────
 (function() {
