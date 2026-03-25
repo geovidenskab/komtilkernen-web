@@ -292,18 +292,17 @@
   }
   .philip-card {
     background: var(--bg2); border: .5px solid var(--border-light);
-    border-radius: 12px; padding: 2rem; text-align: center;
+    border-radius: 12px; overflow: hidden; text-align: center;
     box-shadow: 0 2px 8px rgba(26,47,82,.06);
   }
-  .philip-avatar {
-    width: 110px; height: 110px; border-radius: 50%;
-    margin: 0 auto 1rem; overflow: hidden;
-    border: 3px solid var(--bg3);
+  .philip-photo {
+    width: 100%; height: 280px; overflow: hidden;
   }
-  .philip-avatar img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  .philip-photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 15%;
   }
-  .philip-name { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .2rem; }
+  .philip-card-body { padding: 1.4rem 1.6rem 1.6rem; }
+  .philip-name { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .3rem; }
   .philip-title { font-size: .78rem; color: var(--text3); line-height: 1.5; }
   .philip-prize {
     margin-top: 1rem; padding: .6rem .8rem;
@@ -515,15 +514,17 @@
   <div class="philip-grid">
     <div>
       <div class="philip-card">
-        <div class="philip-avatar"><img src="philip.jpeg" alt="Philip Kruse Jakobsen"></div>
-        <div class="philip-name">Philip Kruse Jakobsen</div>
-        <div class="philip-title">
-          Lektor i fysik, naturgeografi og geovidenskab<br>
-          Silkeborg Gymnasium<br><br>
-          Ph.d. i fysisk oceanografi<br>og klimamodellering
-        </div>
-        <div class="philip-prize">
-          Novo Nordisk Fondens Naturvidenskabelige Gymnasielærerpris 2022
+        <div class="philip-photo"><img src="philip.jpeg" alt="Philip Kruse Jakobsen"></div>
+        <div class="philip-card-body">
+          <div class="philip-name">Philip Kruse Jakobsen</div>
+          <div class="philip-title">
+            Lektor i fysik, naturgeografi og geovidenskab<br>
+            Silkeborg Gymnasium<br><br>
+            Ph.d. i fysisk oceanografi og klimamodellering
+          </div>
+          <div class="philip-prize">
+            Novo Nordisk Fondens Naturvidenskabelige Gymnasielærerpris 2022
+          </div>
         </div>
       </div>
     </div>
