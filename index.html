@@ -372,9 +372,11 @@
       </p>
     </div>
     <div>
-      <div class="seismo-visual">
-        <canvas id="proj-canvas" height="120"></canvas>
-        <div class="seismo-label">Syntetisk seismogram — seismiske bølgefaser, 3 jordmodeller (1900–1936)</div>
+      <div class="seismo-visual" style="padding:0;overflow:hidden;border-radius:12px">
+        <iframe src="app.html" style="width:100%;height:380px;border:none;display:block" loading="lazy" title="Inge Lehmann — seismisk visualisering"></iframe>
+      </div>
+      <div style="margin-top:.6rem;text-align:right">
+        <a href="app.html" target="_blank" class="btn-ghost" style="font-size:.78rem">Åbn i fuld skærm →</a>
       </div>
       <div class="sans-grid" style="margin-top:1.2rem">
         <div class="sans-item">
@@ -410,21 +412,27 @@
     <div class="section-label">Hvad vi vil</div>
     <h2>Seismik fra<br><em>6. klasse</em> og op</h2>
 
+    <p class="lead" style="margin-bottom:2.5rem;max-width:720px">
+      Vi arbejder med at bruge fortællingen om Inge Lehmann til at give elever
+      en menneskelig og meningsfuld indgang til naturvidenskaben — og til at forstå,
+      hvad det egentlig vil sige at opdage noget nyt.
+    </p>
+
     <div class="status-cards">
       <div class="status-card">
-        <div class="status-badge badge-live"><span class="badge-dot"></span>Grundskole</div>
+        <div class="status-badge badge-live"><span class="badge-dot"></span>Grundskole og ungdomsuddannelse</div>
         <h3>Fra 6. klasse og op</h3>
         <p>Vi har udviklet metoder og teknikker, der gør det muligt for elever helt ned i 6. klasse at arbejde med seismik, jordskælv og udforskning af Jordens indre.</p>
       </div>
       <div class="status-card">
-        <div class="status-badge badge-live"><span class="badge-dot"></span>Ægte data</div>
-        <h3>Lyt til ægte jordskælv</h3>
-        <p>Via GeoSeis kan elever se og høre rigtige jordskælv — ikke kun syntetiske eksempler. Seismiske data bliver til lyd og billeder, der giver adgang til Jordens indre.</p>
+        <div class="status-badge badge-live"><span class="badge-dot"></span>Multisanset læring</div>
+        <h3>State of the art — til klasseværelset</h3>
+        <p>Vi udnytter moderne teknikker til at visualisere og oversætte komplekst stof, så elever kan bruge flere af deres sanser. Jordskælv bliver til lyd og billeder. Modeller bliver levende. Ægte data fra GeoSeis bruges direkte i undervisningen.</p>
       </div>
       <div class="status-card">
-        <div class="status-badge badge-build"><span class="badge-dot"></span>SANS-forankret</div>
-        <h3>Udvikle, teste, formidle</h3>
-        <p>Med dette projekt ønsker vi at udvikle, teste og formidle dette arbejde med udgangspunkt i SANS — Følelser, Fantasi, Fortællinger og Fællesskab som veje til faglig forståelse.</p>
+        <div class="status-badge badge-build"><span class="badge-dot"></span>Livsverden møder Verden</div>
+        <h3>Fra hop til jordrystelse</h3>
+        <p>Eleverne starter i deres egen livsverden: de hopper og ser rystelserne på mobilens skærm. Derfra kobles Jordens egne rystelser ind. Afstanden mellem "mig" og "Jordens kerne" bliver kortere.</p>
       </div>
     </div>
 
@@ -533,55 +541,6 @@
   &nbsp;·&nbsp; philip@sans.science
 </footer>
 
-<script>
-
-// ── Projekt seismogram (statisk) ─────────────────────
-(function() {
-  const canvas = document.getElementById('proj-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const w = canvas.width = canvas.parentElement.clientWidth;
-  const h = canvas.height = 120;
-  const mid = h / 2;
-
-  ctx.strokeStyle = 'rgba(0,180,216,.7)';
-  ctx.lineWidth = 1.2;
-  ctx.beginPath();
-
-  const events = [
-    { x: 0.12, amp: 8,  freq: 0.3 },
-    { x: 0.28, amp: 22, freq: 0.25 },
-    { x: 0.48, amp: 35, freq: 0.2 },
-    { x: 0.67, amp: 18, freq: 0.28 },
-    { x: 0.82, amp: 12, freq: 0.32 },
-  ];
-
-  for (let px = 0; px < w; px++) {
-    let y = mid;
-    events.forEach(ev => {
-      const dist = px - ev.x * w;
-      const env = Math.exp(-(dist * dist) / (2 * 900));
-      y += ev.amp * env * Math.sin(dist * ev.freq);
-    });
-    y += Math.sin(px * 0.08) * 1.5;
-    px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
-  }
-  ctx.stroke();
-
-  // Baseline
-  ctx.strokeStyle = 'rgba(255,255,255,.06)';
-  ctx.lineWidth = 0.5;
-  ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(w, mid); ctx.stroke();
-
-  // Phase labels
-  const labels = ['P', 'PP', 'PKP', 'PKiKP', 'PKIKP'];
-  events.forEach((ev, i) => {
-    ctx.fillStyle = 'rgba(0,180,216,.5)';
-    ctx.font = '9px DM Sans, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText(labels[i] || '', ev.x * w, 12);
-  });
-})();
-</script>
+<script></script>
 </body>
 </html>
