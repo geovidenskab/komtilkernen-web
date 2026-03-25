@@ -1,0 +1,70 @@
+<!--
+  Mørkt hero-design — gemt til genbrug (fx forløbsside, sektionsbaggrund, CTA-sektion)
+  Bruger lehmann-hero.jpg som fuld-bleed baggrund med mørkt overlay og hvid tekst.
+-->
+
+<style>
+.hero-dark {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 6rem 2rem 4rem;
+  overflow: hidden;
+}
+.hero-dark .bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center center;
+  opacity: .72; pointer-events: none;
+}
+.hero-dark .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5,10,22,.45) 0%,
+    rgba(5,10,22,.15) 40%,
+    rgba(5,10,22,.55) 100%
+  );
+  pointer-events: none;
+}
+.hero-dark .eyebrow {
+  font-size: .7rem; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: #00b4d8;
+  margin-bottom: 1.4rem; position: relative;
+}
+.hero-dark h1 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 300; line-height: 1.05;
+  letter-spacing: -.02em; color: #f5f0e8;
+  position: relative; margin-bottom: .6rem;
+}
+.hero-dark h1 em { font-style: italic; color: #00b4d8; }
+.hero-dark .sub {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 300; font-style: italic;
+  color: rgba(245,240,232,.7);
+  margin-bottom: 1.8rem; position: relative;
+}
+.hero-dark .desc {
+  max-width: 560px; font-size: .95rem;
+  color: rgba(245,240,232,.4); line-height: 1.7;
+  margin: 0 auto 2.4rem; position: relative;
+}
+.hero-dark .actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; }
+</style>
+
+<section class="hero-dark">
+  <img class="bg" src="lehmann-hero.jpg" alt="">
+  <div class="overlay"></div>
+  <div class="eyebrow">Et undervisningsprojekt om opdagelse og naturvidenskab</div>
+  <h1>Kom til <em>kernen</em></h1>
+  <div class="sub">Lyt til Jorden med Inge Lehmann</div>
+  <p class="desc">
+    Fra 6. klasse til gymnasiet — elever udforsker Jordens indre,
+    lytter til ægte jordskælv og følger i sporene på en af videnskabshistoriens
+    mest oversete opdagere.
+  </p>
+  <div class="actions">
+    <!-- indsæt knapper her -->
+  </div>
+</section>

@@ -76,56 +76,53 @@
 
   /* ── HERO ── */
   .hero {
-    position: relative; min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 6rem 2rem 4rem;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     overflow: hidden;
+    background: var(--bg);
   }
-  .hero-bg-img {
+  .hero-text-col {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 3.5rem 4rem 4rem;
+  }
+  .hero-image-col {
+    position: relative; overflow: hidden; min-height: 100vh;
+  }
+  .hero-image-col img {
     position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; object-position: center center;
-    opacity: .72; pointer-events: none;
-  }
-  .hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(5,10,22,.45) 0%,
-      rgba(5,10,22,.15) 40%,
-      rgba(5,10,22,.55) 100%
-    );
-    pointer-events: none;
+    object-fit: cover; object-position: 55% center;
+    opacity: .95;
   }
   .hero-eyebrow {
-    font-size: .7rem; font-weight: 600; letter-spacing: .18em;
+    font-size: .65rem; font-weight: 600; letter-spacing: .18em;
     text-transform: uppercase; color: var(--cyan);
-    margin-bottom: 1.4rem; position: relative;
+    margin-bottom: 1.6rem;
   }
   .hero h1 {
     font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-size: clamp(3rem, 5vw, 5.5rem);
     font-weight: 300; line-height: 1.05;
     letter-spacing: -.02em;
-    color: var(--sand);
-    position: relative;
-    margin-bottom: .6rem;
+    color: var(--text);
+    margin-bottom: 1rem;
   }
   .hero h1 em { font-style: italic; color: var(--cyan); }
   .hero-sub {
     font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
     font-weight: 300; font-style: italic;
-    color: var(--sand2);
-    margin-bottom: 1.8rem; position: relative;
+    color: var(--text2);
+    margin-bottom: 1.6rem;
   }
   .hero-desc {
-    max-width: 560px; font-size: .95rem;
-    color: var(--sand3); line-height: 1.7;
-    margin: 0 auto 2.4rem; position: relative;
+    font-size: .95rem; color: var(--text3);
+    line-height: 1.75; max-width: 440px;
+    margin-bottom: 2.4rem;
   }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn-primary {
-    background: var(--cyan); color: var(--navy);
+    background: var(--cyan); color: #fff;
     padding: .7rem 1.8rem; border-radius: 8px;
     font-weight: 600; font-size: .9rem;
     text-decoration: none; transition: opacity .2s;
@@ -140,20 +137,39 @@
     display: inline-flex; align-items: center; gap: .4rem;
   }
   .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
-  /* Ghost-knapper på mørk baggrund (hero, kontakt) */
-  .hero .btn-ghost, .contact-section .btn-ghost {
+  .contact-section .btn-ghost {
     background: transparent; border-color: rgba(255,255,255,.2);
     color: var(--sand2);
   }
-  .hero .btn-ghost:hover, .contact-section .btn-ghost:hover {
+  .contact-section .btn-ghost:hover {
     border-color: rgba(255,255,255,.5); color: var(--sand);
   }
-  .hero-scroll {
-    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: .4rem;
-    color: var(--sand3); font-size: .65rem; letter-spacing: .1em;
+  /* App preview kort */
+  .app-preview-link { text-decoration: none; display: block; }
+  .app-preview-card {
+    background: var(--navy); border-radius: 12px;
+    padding: 2.5rem 2rem; text-align: center;
+    border: .5px solid rgba(255,255,255,.08);
+    transition: transform .2s;
   }
-  .scroll-arrow { width: 1px; height: 32px; background: linear-gradient(to bottom, transparent, var(--sand3)); }
+  .app-preview-link:hover .app-preview-card { transform: translateY(-2px); }
+  .app-preview-card .app-label {
+    font-size: .6rem; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem;
+  }
+  .app-preview-card h4 {
+    font-family: 'Newsreader', serif; font-size: 1.3rem;
+    font-weight: 300; color: var(--sand); margin-bottom: .6rem;
+  }
+  .app-preview-card p {
+    font-size: .78rem; color: var(--sand3); line-height: 1.6; margin-bottom: 1.4rem;
+  }
+  .app-preview-cta {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: var(--cyan); color: var(--navy);
+    padding: .55rem 1.3rem; border-radius: 6px;
+    font-size: .82rem; font-weight: 600;
+  }
 
   /* ── SECTIONS ── */
   section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
@@ -324,12 +340,14 @@
   @media (max-width: 768px) {
     nav { padding: .8rem 1.2rem; }
     .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-text-col { padding: 6rem 1.5rem 3rem; }
+    .hero-image-col { min-height: 55vw; }
     .projekt-grid, .philip-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .status-cards { grid-template-columns: 1fr; }
     .sans-grid { grid-template-columns: 1fr; }
     section { padding: 3.5rem 1.2rem; }
     .status-section, .contact-section { padding: 3.5rem 1.2rem; }
-    .hero h1 { font-size: clamp(2.5rem, 12vw, 5rem); }
   }
 </style>
 </head>
@@ -351,24 +369,22 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <img class="hero-bg-img" src="lehmann-hero.jpg" alt="">
-  <div class="hero-overlay"></div>
-  <div class="hero-eyebrow">Et undervisningsprojekt om opdagelse og naturvidenskab</div>
-  <h1>Kom til <em>kernen</em></h1>
-  <div class="hero-sub">Lyt til Jorden med Inge Lehmann</div>
-  <p class="hero-desc">
-    Fra 6. klasse til gymnasiet — elever udforsker Jordens indre,
-    lytter til ægte jordskælv og følger i sporene på en af videnskabshistoriens
-    mest oversete opdagere.
-  </p>
-  <div class="hero-actions">
-    <a href="#hvorfor" class="btn-primary">
-      Læs mere <span>→</span>
-    </a>
-    <a href="#kontakt" class="btn-ghost">Kontakt Philip</a>
+  <div class="hero-text-col">
+    <div class="hero-eyebrow">Et undervisningsprojekt om opdagelse og naturvidenskab</div>
+    <h1>Kom til <em>kernen</em></h1>
+    <div class="hero-sub">Lyt til Jorden med Inge Lehmann</div>
+    <p class="hero-desc">
+      Fra 6. klasse til gymnasiet — elever udforsker Jordens indre,
+      lytter til ægte jordskælv og følger i sporene på en af videnskabshistoriens
+      mest oversete opdagere.
+    </p>
+    <div class="hero-actions">
+      <a href="#hvorfor" class="btn-primary">Læs mere →</a>
+      <a href="#kontakt" class="btn-ghost">Kontakt Philip</a>
+    </div>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-arrow"></div>
+  <div class="hero-image-col">
+    <img src="lehmann-hero.jpg" alt="Inge Lehmann — neon portræt med seismiske bølger">
   </div>
 </section>
 
@@ -395,12 +411,14 @@
       </p>
     </div>
     <div>
-      <div class="seismo-visual" style="padding:0;overflow:hidden;border-radius:12px">
-        <iframe src="app.html" style="width:100%;height:380px;border:none;display:block" loading="lazy" title="Inge Lehmann — seismisk visualisering"></iframe>
-      </div>
-      <div style="margin-top:.6rem;text-align:right">
-        <a href="app.html" target="_blank" class="btn-ghost" style="font-size:.78rem">Åbn i fuld skærm →</a>
-      </div>
+      <a href="app.html" target="_blank" class="app-preview-link">
+        <div class="app-preview-card">
+          <div class="app-label">Interaktiv visualisering</div>
+          <h4>Inge Lehmanns jordmodeller</h4>
+          <p>Tre historiske jordmodeller (1900 · 1914 · 1936) — seismiske strålegange, bølgefaser og syntetiske seismogrammer. Klik for at udforske.</p>
+          <span class="app-preview-cta">Åbn app →</span>
+        </div>
+      </a>
       <div class="sans-grid" style="margin-top:1.2rem">
         <div class="sans-item">
           <div class="sans-letter">F</div>
