@@ -295,11 +295,12 @@
     box-shadow: 0 2px 8px rgba(26,47,82,.06);
   }
   .philip-avatar {
-    width: 80px; height: 80px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--cyan) 0%, var(--navy3) 100%);
-    margin: 0 auto 1rem;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Newsreader', serif; font-size: 2rem; color: #fff;
+    width: 110px; height: 110px; border-radius: 50%;
+    margin: 0 auto 1rem; overflow: hidden;
+    border: 3px solid var(--bg3);
+  }
+  .philip-avatar img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
   }
   .philip-name { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .2rem; }
   .philip-title { font-size: .78rem; color: var(--text3); line-height: 1.5; }
@@ -513,7 +514,7 @@
   <div class="philip-grid">
     <div>
       <div class="philip-card">
-        <div class="philip-avatar">P</div>
+        <div class="philip-avatar"><img src="philip.jpeg" alt="Philip Kruse Jakobsen"></div>
         <div class="philip-name">Philip Kruse Jakobsen</div>
         <div class="philip-title">
           Lektor i fysik, naturgeografi og geovidenskab<br>
