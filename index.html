@@ -78,49 +78,55 @@
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1fr 1fr;
     overflow: hidden;
-    background: var(--bg);
+    background: var(--bg2);
+    position: relative;
   }
   .hero-text-col {
     display: flex; flex-direction: column; justify-content: center;
-    padding: 6rem 3.5rem 4rem 4rem;
+    padding: 6rem 3rem 4rem 4rem;
     min-height: 100vh;
+    z-index: 2;
   }
   .hero-image-col {
     position: relative; overflow: hidden; min-height: 100vh;
-    background-image: url('lehmann-hero.jpg');
-    background-size: cover;
-    background-position: 20% center;
-  }
-  .hero-image-col .hero-img-bg {
-    position: absolute; inset: 0;
-    background-image: url('lehmann-hero.jpg');
-    background-size: cover;
-    background-position: 20% center;
-    filter: blur(18px) brightness(.55) saturate(1.2);
-    transform: scale(1.05);
   }
   .hero-image-col img {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 110%;
-    height: auto;
-    opacity: .95;
-    filter: brightness(1.4) contrast(1.1);
-    z-index: 1;
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: left 20%;
+    filter: grayscale(.3) brightness(1.6) contrast(.9) sepia(.35);
+    mix-blend-mode: multiply;
+    opacity: .55;
   }
+  /* Varm gradient over billedet — binder det til baggrunden */
   .hero-image-col::after {
     content: '';
-    position: absolute; inset: 0; z-index: 2;
-    background: linear-gradient(to bottom,
-      rgba(10,22,40,.5) 0%,
-      transparent 20%,
-      transparent 80%,
-      rgba(10,22,40,.5) 100%
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg,
+      rgba(248,244,239,.6) 0%,
+      transparent 40%,
+      transparent 70%,
+      rgba(248,244,239,.4) 100%
     );
     pointer-events: none;
+  }
+  /* Seismisk bølge */
+  .hero-wave {
+    position: absolute;
+    bottom: 28%; left: 0; width: 100%;
+    z-index: 3;
+    pointer-events: none;
+    opacity: .35;
+  }
+  /* Kerne-antydning */
+  .hero-core {
+    position: absolute;
+    right: 8%; bottom: 12%;
+    width: 220px; height: 220px;
+    z-index: 1;
+    opacity: .07;
   }
   .hero-eyebrow {
     font-size: .58rem; font-weight: 600; letter-spacing: .14em;
@@ -371,6 +377,8 @@
     .hero { grid-template-columns: 1fr; }
     .hero-text-col { padding: 6rem 1.5rem 3rem; }
     .hero-image-col { min-height: 55vw; }
+    .hero-wave { bottom: 18%; }
+    .hero-core { right: 5%; bottom: 5%; width: 140px; height: 140px; }
     .projekt-grid, .philip-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .status-cards { grid-template-columns: 1fr; }
     .sans-grid { grid-template-columns: 1fr; }
@@ -412,9 +420,22 @@
     </div>
   </div>
   <div class="hero-image-col">
-    <div class="hero-img-bg"></div>
-    <img src="lehmann-hero.jpg" alt="Inge Lehmann — neon portræt med seismiske bølger">
+    <img src="lehmann-hero.jpg" alt="Inge Lehmann — portræt">
   </div>
+
+  <!-- Seismisk bølge henover hele hero -->
+  <svg class="hero-wave" viewBox="0 0 1400 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 L180,40 C200,40 210,38 220,32 C230,26 235,22 245,40 C255,58 260,54 270,40 C280,26 290,22 300,40 L380,40 C400,40 410,35 420,18 C430,0 435,-8 445,40 C455,80 460,88 470,40 C480,-5 485,-10 495,40 C505,75 510,68 520,40 C530,18 540,22 550,40 L620,40 C635,40 640,36 650,28 C660,20 665,18 675,40 C685,58 690,54 700,40 L780,40 C790,40 795,38 805,34 C815,30 818,28 825,40 C832,52 835,50 842,40 L1400,40"
+      fill="none" stroke="#00a8c8" stroke-width="2.2" stroke-linecap="round"/>
+  </svg>
+
+  <!-- Koncentriske cirkler — antydning af kernen -->
+  <svg class="hero-core" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="110" cy="110" r="105" fill="none" stroke="#c67a2e" stroke-width="1"/>
+    <circle cx="110" cy="110" r="72" fill="none" stroke="#c67a2e" stroke-width=".8"/>
+    <circle cx="110" cy="110" r="38" fill="none" stroke="#c67a2e" stroke-width=".6"/>
+    <circle cx="110" cy="110" r="16" fill="#c67a2e" opacity=".15"/>
+  </svg>
 </section>
 
 <hr class="divider">
