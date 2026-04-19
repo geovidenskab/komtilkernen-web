@@ -163,6 +163,39 @@
     display: inline-flex; align-items: center; gap: .4rem;
   }
   .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  .galilei-thumb {
+    display: inline-flex; align-items: center; gap: .8rem;
+    margin-top: 1.2rem; padding: .5rem .9rem .5rem .5rem;
+    background: rgba(255,255,255,.7);
+    border: .5px solid var(--border-light);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all .2s;
+    box-shadow: 0 1px 4px rgba(26,47,82,.06);
+    width: fit-content;
+  }
+  .galilei-thumb:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(26,47,82,.15);
+    border-color: rgba(0,168,200,.4);
+  }
+  .galilei-thumb img {
+    width: 48px; height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .galilei-thumb-label { display: flex; flex-direction: column; gap: 2px; }
+  .galilei-thumb-label small {
+    font-size: .65rem; color: var(--text3);
+    text-transform: uppercase; letter-spacing: .07em;
+    font-weight: 600;
+  }
+  .galilei-thumb-label span {
+    font-size: .88rem; font-weight: 600; color: var(--text);
+  }
   .contact-section .btn-ghost {
     background: transparent; border-color: rgba(255,255,255,.2);
     color: var(--sand2);
@@ -171,6 +204,26 @@
     border-color: rgba(255,255,255,.5); color: var(--sand);
   }
   /* App preview kort */
+  .jordmodel-thumb {
+    display: block; text-decoration: none; position: relative;
+    border-radius: 10px; overflow: hidden;
+    border: .5px solid var(--border-light);
+    box-shadow: 0 2px 10px rgba(26,47,82,.08);
+    transition: all .2s;
+  }
+  .jordmodel-thumb:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26,47,82,.15);
+  }
+  .jordmodel-thumb img { width: 100%; height: auto; display: block; }
+  .jordmodel-thumb-cta {
+    position: absolute; right: .8rem; bottom: .8rem;
+    background: var(--cyan); color: #fff;
+    padding: .4rem .9rem; border-radius: 6px;
+    font-size: .78rem; font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  }
+
   .app-preview-link { text-decoration: none; display: block; }
   .app-preview-card {
     background: var(--navy); border-radius: 12px;
@@ -362,6 +415,81 @@
   footer a { color: var(--text3); text-decoration: none; }
   footer a:hover { color: var(--text); }
 
+  /* ── FORANKRING / LÆRING ── */
+  .laering-section { background: var(--bg2); padding: 5rem 2rem; }
+  .laering-inner { max-width: 1100px; margin: 0 auto; }
+  .laering-intro {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 3rem; margin-top: 2rem; align-items: start;
+  }
+  .laering-text p { margin-bottom: 1rem; }
+  .laering-text p.lead { font-size: 1.15rem; line-height: 1.6; font-weight: 400; margin-bottom: 1.2rem; color: var(--text); }
+  .laering-image {
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(26,47,82,.12);
+    background: var(--bg);
+  }
+  .laering-image img { width: 100%; height: auto; display: block; }
+  .laering-image figcaption {
+    font-size: .72rem; color: var(--text3);
+    padding: .7rem .9rem; line-height: 1.4; background: var(--bg);
+    border-top: .5px solid var(--border-light);
+  }
+
+  .laereplan-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .laereplan-card {
+    background: var(--bg); border: .5px solid var(--border-light);
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(26,47,82,.06);
+    display: flex; flex-direction: column;
+  }
+  .laering-card-image {
+    width: 100%; aspect-ratio: 16 / 10; overflow: hidden;
+    background: var(--bg3);
+  }
+  .laering-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .laereplan-card .status-badge { margin: 1.4rem 1.6rem 0; }
+  .laereplan-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--text); margin: .6rem 1.6rem .5rem; }
+  .laereplan-card > p { margin: 0 1.6rem 1.6rem; }
+
+  .laering-cta {
+    margin-top: 2.5rem; text-align: center;
+    font-size: 1.02rem; font-weight: 500;
+  }
+  .laering-cta a {
+    color: var(--cyan); text-decoration: none;
+    border-bottom: 1px solid rgba(0,168,200,.3);
+    padding-bottom: 2px; transition: all .2s;
+  }
+  .laering-cta a:hover { border-bottom-color: var(--cyan); }
+
+  /* legacy (ikke længere brugt — behold som fallback) */
+  .laereplan-card p { font-size: .88rem; color: var(--text2); line-height: 1.65; margin-bottom: .7rem; }
+  .laereplan-card p:last-child { margin-bottom: 0; }
+  .laereplan-card strong { color: var(--text); font-weight: 600; }
+
+  .badge-cyan { background: rgba(0,168,200,.1); color: var(--cyan2); border: .5px solid rgba(0,168,200,.25); }
+  .badge-orange { background: rgba(239,138,23,.1); color: var(--orange); border: .5px solid rgba(239,138,23,.25); }
+
+  .praksis-intro { margin-top: 3.5rem; margin-bottom: 1.2rem; }
+  .praksis-intro h3 { font-size: 1.5rem; font-weight: 500; color: var(--text); font-family: 'Newsreader', serif; line-height: 1.2; }
+  .praksis-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .praksis-card {
+    background: var(--bg); border: .5px solid var(--border-light);
+    border-radius: 8px; padding: 1.2rem 1.1rem;
+  }
+  .praksis-card h4 {
+    font-size: .82rem; font-weight: 600; color: var(--cyan2);
+    margin-bottom: .5rem; letter-spacing: .01em;
+  }
+  .praksis-card p { font-size: .78rem; color: var(--text2); line-height: 1.6; margin: 0; }
+
   /* ── AKTIVITETER / PAKKER ── */
   .activities-section { background: var(--bg); padding: 5rem 2rem; }
   .activities-grid {
@@ -395,8 +523,11 @@
     .projekt-grid, .philip-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .status-cards { grid-template-columns: 1fr; }
     .sans-grid { grid-template-columns: 1fr; }
+    .laering-intro { grid-template-columns: 1fr; gap: 2rem; }
+    .laereplan-grid { grid-template-columns: 1fr; }
+    .praksis-grid { grid-template-columns: 1fr 1fr; }
     section { padding: 3.5rem 1.2rem; }
-    .status-section, .contact-section { padding: 3.5rem 1.2rem; }
+    .status-section, .contact-section, .laering-section, .activities-section { padding: 3.5rem 1.2rem; }
   }
 </style>
 </head>
@@ -410,6 +541,7 @@
   <ul class="nav-links">
     <li><a href="#hvorfor">Hvorfor</a></li>
     <li><a href="#hvad">Hvad vi vil</a></li>
+    <li><a href="#laering">Forankring</a></li>
     <li><a href="#aktiviteter">Aktiviteter</a></li>
     <li><a href="#hvem">Hvem er vi</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
@@ -432,6 +564,13 @@
       <a href="#hvorfor" class="btn-primary">Læs mere →</a>
       <a href="#kontakt" class="btn-ghost">Kontakt Philip</a>
     </div>
+    <a href="https://geo.sg.dk/himlen/galilei.html" target="_blank" rel="noopener" class="galilei-thumb">
+      <img src="galilei-thumb.png" alt="Galilei-rollespil — illustration">
+      <div class="galilei-thumb-label">
+        <small>Se vores proof-of-concept</small>
+        <span>Galilei-rollespillet →</span>
+      </div>
+    </a>
   </div>
   <div class="hero-image-col">
     <img src="lehmann-portrait.png" alt="Inge Lehmann, 1932 — portræt">
@@ -479,13 +618,9 @@
       </p>
     </div>
     <div>
-      <a href="app.html" target="_blank" class="app-preview-link">
-        <div class="app-preview-card">
-          <div class="app-label">Interaktiv visualisering</div>
-          <h4>Inge Lehmanns jordmodeller</h4>
-          <p>Tre historiske jordmodeller (1900 · 1914 · 1936) — seismiske strålegange, bølgefaser og syntetiske seismogrammer. Klik for at udforske.</p>
-          <span class="app-preview-cta">Åbn app →</span>
-        </div>
+      <a href="app.html?autoplay=1" target="_blank" rel="noopener" class="jordmodel-thumb">
+        <img src="jordmodel.png" alt="Inge Lehmanns jordmodeller — interaktiv app">
+        <span class="jordmodel-thumb-cta">Åbn app →</span>
       </a>
       <div class="sans-grid" style="margin-top:1.2rem">
         <div class="sans-item">
@@ -587,6 +722,46 @@
         </p>
       </div>
     </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FORANKRING / LÆRING -->
+<div class="laering-section" id="laering">
+  <div class="laering-inner">
+    <div class="section-label">Forankring</div>
+    <h2>Kernen binder<br><em>fagene sammen</em></h2>
+
+    <p class="lead" style="max-width:720px;margin-bottom:2.5rem">
+      Jordens faste kerne forbinder bølgefysik, modeltænkning, jordens lag og
+      en stærk menneskelig fortælling — hands-on og sanseligt, fra udskolingens
+      natur/teknologi til gymnasiets geovidenskab.
+    </p>
+
+    <div class="laereplan-grid">
+      <div class="laereplan-card">
+        <figure class="laering-card-image">
+          <img src="slinky.png" alt="Langs- og tværbølger demonstreret i en slinky">
+        </figure>
+        <div class="status-badge badge-cyan"><span class="badge-dot"></span>Grundskolen · 6.-9. kl.</div>
+        <h3>Ét emne, mange fælles mål</h3>
+        <p>Natur/teknologi, fysik/kemi og geografi mødes om bølger, modeller og jordens systemer — hands-on i elevernes egne hænder.</p>
+      </div>
+
+      <div class="laereplan-card">
+        <figure class="laering-card-image">
+          <img src="brydning.png" alt="Elever undersøger bølgebrydning i hands-on forsøg">
+        </figure>
+        <div class="status-badge badge-orange"><span class="badge-dot"></span>Gymnasium · STX / HF</div>
+        <h3>Faglig bredde og dybde</h3>
+        <p>Fysik, naturgeografi og geovidenskab A — med reel data fra eleverne selv og oplagte SRP-muligheder.</p>
+      </div>
+    </div>
+
+    <p class="laering-cta">
+      <a href="#kontakt">Vil du høre mere? Kontakt Philip →</a>
+    </p>
   </div>
 </div>
 

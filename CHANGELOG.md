@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.7.0] — 2026-04-19
+### Tilføjet
+- Ny sektion "Forankring — Kernen binder fagene sammen" mellem "Hvad vi vil" og "Pakkerne"
+- To læreplanskort med billeder: grundskole (slinky.png) og gymnasium STX/HF (brydning.png)
+- Galilei-thumbnail i Hero med illustration fra rollespillet — tydeligere reference til proof-of-concept
+- jordmodel.png som klikbar thumbnail i "Hvorfor" (erstatter tidligere sort "Interaktiv visualisering"-boks)
+- autoplay=1 parameter på app-link (klar til appen kan reagere på den)
+- Nav-link "Forankring"
+- CTA "Vil du høre mere? Kontakt Philip →" under forankrings-gridden
+
+### Ændret
+- Forankring-sektion skrevet kort og fokuseret (én kort lead + 2 kort + CTA) frem for lange afsnit
+
+### Fjernet
+- Gamle billeder hands-on-fjeder.png og elever-eksperiment.png (erstattet af slinky.png, brydning.png, jordmodel.png, galilei-thumb.png)
+
 ## [0.6.0] — 2026-04-19
 ### Tilføjet
 - Ny sektion "Pakkerne — Fem aktiviteter, én fortælling" mellem "Hvad vi vil" og "Hvem er vi"
