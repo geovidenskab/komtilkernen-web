@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.8.0] — 2026-04-19
+### Ændret
+- "Forankring"-sektion omdøbt til "Mening" — ny overskrift "Det giver mening" med fokus på mening for eleverne (på tværs af fag) og for læreren (læreplaner trækkes sammen)
+- Nav-link opdateret til "Mening"
+- Jordmodel-thumbnail i "Hvorfor" nedtonet: maks 300px bred, centreret, let opacity i hvile — ikke længere grafisk dominerende
+- Opdateret slinky.png (nyt elevbillede fra laboratoriet)
+
+### Tilføjet
+- Bølge-billedstrip med tre bølge-billeder: slinky (kropslig), brydning (laser/måling), brydning_lys2 (lys som bølge). Hver med caption.
+
 ## [0.7.0] — 2026-04-19
 ### Tilføjet
 - Ny sektion "Forankring — Kernen binder fagene sammen" mellem "Hvad vi vil" og "Pakkerne"

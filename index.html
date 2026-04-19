@@ -206,22 +206,25 @@
   /* App preview kort */
   .jordmodel-thumb {
     display: block; text-decoration: none; position: relative;
-    border-radius: 10px; overflow: hidden;
+    border-radius: 8px; overflow: hidden;
     border: .5px solid var(--border-light);
-    box-shadow: 0 2px 10px rgba(26,47,82,.08);
+    box-shadow: 0 1px 4px rgba(26,47,82,.05);
     transition: all .2s;
+    max-width: 300px; margin: 0 auto;
+    opacity: .85;
   }
   .jordmodel-thumb:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(26,47,82,.15);
+    opacity: 1;
+    box-shadow: 0 4px 14px rgba(26,47,82,.12);
   }
   .jordmodel-thumb img { width: 100%; height: auto; display: block; }
   .jordmodel-thumb-cta {
-    position: absolute; right: .8rem; bottom: .8rem;
+    position: absolute; right: .5rem; bottom: .5rem;
     background: var(--cyan); color: #fff;
-    padding: .4rem .9rem; border-radius: 6px;
-    font-size: .78rem; font-weight: 600;
-    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    padding: .25rem .65rem; border-radius: 4px;
+    font-size: .7rem; font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0,0,0,.15);
   }
 
   .app-preview-link { text-decoration: none; display: block; }
@@ -455,6 +458,39 @@
   .laereplan-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--text); margin: .6rem 1.6rem .5rem; }
   .laereplan-card > p { margin: 0 1.6rem 1.6rem; }
 
+  .mening-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-top: 2rem;
+  }
+  .mening-card {
+    background: var(--bg); border: .5px solid var(--border-light);
+    border-radius: 10px; padding: 1.8rem 1.6rem;
+    box-shadow: 0 2px 8px rgba(26,47,82,.06);
+  }
+  .mening-card .status-badge { margin-bottom: .8rem; }
+  .mening-card h3 { font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: .6rem; }
+  .mening-card p { font-size: .92rem; color: var(--text2); line-height: 1.6; margin: 0; }
+
+  .boelge-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; margin-top: 2.5rem;
+  }
+  .boelge-item {
+    border-radius: 8px; overflow: hidden;
+    background: var(--bg); border: .5px solid var(--border-light);
+    box-shadow: 0 1px 4px rgba(26,47,82,.05);
+    margin: 0;
+  }
+  .boelge-item img {
+    width: 100%; aspect-ratio: 16 / 10;
+    object-fit: cover; display: block;
+  }
+  .boelge-item figcaption {
+    padding: .6rem .8rem; font-size: .75rem;
+    color: var(--text3); line-height: 1.4;
+    border-top: .5px solid var(--border-light);
+  }
+
   .laering-cta {
     margin-top: 2.5rem; text-align: center;
     font-size: 1.02rem; font-weight: 500;
@@ -526,6 +562,8 @@
     .laering-intro { grid-template-columns: 1fr; gap: 2rem; }
     .laereplan-grid { grid-template-columns: 1fr; }
     .praksis-grid { grid-template-columns: 1fr 1fr; }
+    .mening-grid { grid-template-columns: 1fr; }
+    .boelge-strip { grid-template-columns: 1fr; }
     section { padding: 3.5rem 1.2rem; }
     .status-section, .contact-section, .laering-section, .activities-section { padding: 3.5rem 1.2rem; }
   }
@@ -541,7 +579,7 @@
   <ul class="nav-links">
     <li><a href="#hvorfor">Hvorfor</a></li>
     <li><a href="#hvad">Hvad vi vil</a></li>
-    <li><a href="#laering">Forankring</a></li>
+    <li><a href="#mening">Mening</a></li>
     <li><a href="#aktiviteter">Aktiviteter</a></li>
     <li><a href="#hvem">Hvem er vi</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
@@ -727,36 +765,54 @@
 
 <hr class="divider">
 
-<!-- FORANKRING / LÆRING -->
-<div class="laering-section" id="laering">
+<!-- MENING -->
+<div class="laering-section" id="mening">
   <div class="laering-inner">
-    <div class="section-label">Forankring</div>
-    <h2>Kernen binder<br><em>fagene sammen</em></h2>
+    <div class="section-label">Mening</div>
+    <h2>Det giver<br><em>mening</em></h2>
 
     <p class="lead" style="max-width:720px;margin-bottom:2.5rem">
-      Jordens faste kerne forbinder bølgefysik, modeltænkning, jordens lag og
-      en stærk menneskelig fortælling — hands-on og sanseligt, fra udskolingens
-      natur/teknologi til gymnasiets geovidenskab.
+      Kernen som emne giver mening — for eleverne og for læreren. For eleverne,
+      fordi bølger, modeller, jordens lag og en stærk fortælling mødes i én
+      konkret undersøgelse på tværs af fag. For læreren, fordi forløbet trækker
+      stof og hands-on øvelser direkte ud af læreplanerne og binder dem sammen.
     </p>
 
-    <div class="laereplan-grid">
-      <div class="laereplan-card">
-        <figure class="laering-card-image">
-          <img src="slinky.png" alt="Langs- og tværbølger demonstreret i en slinky">
-        </figure>
-        <div class="status-badge badge-cyan"><span class="badge-dot"></span>Grundskolen · 6.-9. kl.</div>
-        <h3>Ét emne, mange fælles mål</h3>
-        <p>Natur/teknologi, fysik/kemi og geografi mødes om bølger, modeller og jordens systemer — hands-on i elevernes egne hænder.</p>
+    <div class="mening-grid">
+      <div class="mening-card">
+        <div class="status-badge badge-cyan"><span class="badge-dot"></span>For eleverne</div>
+        <h3>På tværs af fag</h3>
+        <p>
+          Fra udskolingens natur/teknologi til gymnasiets geovidenskab finder
+          eleverne en fælles fortælling de selv kan undersøge. Et hop, en
+          bølge, en skygge-zone. Konkret, kropsligt, sanseligt — og sammen.
+        </p>
       </div>
 
-      <div class="laereplan-card">
-        <figure class="laering-card-image">
-          <img src="brydning.png" alt="Elever undersøger bølgebrydning i hands-on forsøg">
-        </figure>
-        <div class="status-badge badge-orange"><span class="badge-dot"></span>Gymnasium · STX / HF</div>
-        <h3>Faglig bredde og dybde</h3>
-        <p>Fysik, naturgeografi og geovidenskab A — med reel data fra eleverne selv og oplagte SRP-muligheder.</p>
+      <div class="mening-card">
+        <div class="status-badge badge-orange"><span class="badge-dot"></span>For læreren</div>
+        <h3>Læreplanerne trækkes sammen</h3>
+        <p>
+          Ét forløb rummer bølger, energi, modeller, Jordens systemer og den
+          naturvidenskabelige metode — og aktiverer det hands-on arbejde som
+          traditionelt virker i klasseværelset.
+        </p>
       </div>
+    </div>
+
+    <div class="boelge-strip">
+      <figure class="boelge-item">
+        <img src="slinky.png" alt="Elever arbejder med bølger i laboratoriet">
+        <figcaption>Langs- og tværbølger — kropsligt</figcaption>
+      </figure>
+      <figure class="boelge-item">
+        <img src="brydning.png" alt="Elever undersøger bølgebrydning med laser">
+        <figcaption>Refraktion — måling og metode</figcaption>
+      </figure>
+      <figure class="boelge-item">
+        <img src="brydning_lys2.png" alt="Lysbølge brydes i bølgeformet medie">
+        <figcaption>Lys som bølge — bro til Snells lov</figcaption>
+      </figure>
     </div>
 
     <p class="laering-cta">
