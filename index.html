@@ -362,8 +362,29 @@
   footer a { color: var(--text3); text-decoration: none; }
   footer a:hover { color: var(--text); }
 
+  /* ── AKTIVITETER / PAKKER ── */
+  .activities-section { background: var(--bg); padding: 5rem 2rem; }
+  .activities-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 1.2rem; margin-top: 2.5rem;
+  }
+  .activities-grid > .status-card { grid-column: span 2; }
+  .activities-grid > .status-card:nth-child(4) { grid-column: 2 / span 2; }
+  .activities-grid > .status-card:nth-child(5) { grid-column: 4 / span 2; }
+  .activities-grid .status-card .pakke-num {
+    font-family: 'Newsreader', serif;
+    font-style: italic; font-size: 2.2rem; color: var(--cyan);
+    line-height: 1; margin-bottom: .4rem; font-weight: 400;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
+    .activities-grid, .activities-grid > .status-card,
+    .activities-grid > .status-card:nth-child(4),
+    .activities-grid > .status-card:nth-child(5) {
+      grid-template-columns: 1fr; grid-column: 1;
+    }
+    .activities-grid { grid-template-columns: 1fr; }
     nav { padding: .8rem 1.2rem; }
     .nav-links { display: none; }
     .hero { grid-template-columns: 1fr; }
@@ -389,6 +410,7 @@
   <ul class="nav-links">
     <li><a href="#hvorfor">Hvorfor</a></li>
     <li><a href="#hvad">Hvad vi vil</a></li>
+    <li><a href="#aktiviteter">Aktiviteter</a></li>
     <li><a href="#hvem">Hvem er vi</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
@@ -563,6 +585,65 @@
         <p style="margin-top:1rem;font-size:.85rem;color:var(--text3)">
           Fondsstøtte søges hos Novo Nordisk Fonden (NUF) til et treårigt projekt (2027–2030).
         </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- AKTIVITETER / PAKKER -->
+<div class="activities-section" id="aktiviteter">
+  <div class="status-inner">
+    <div class="section-label">Pakkerne</div>
+    <h2>Fem aktiviteter —<br><em>én fortælling</em></h2>
+
+    <p class="lead" style="margin-bottom:1.5rem;max-width:720px">
+      Kom til kernen er ikke ét produkt men en portefølje af sammenhængende
+      aktiviteter. Fem pakker der rammer forskellige målgrupper, sanselige modi
+      og klassetrin. Fælles for dem alle er fortællingen om Inge Lehmann
+      — og muligheden for selv at lytte til Jorden.
+    </p>
+
+    <div class="status-cards activities-grid">
+      <div class="status-card">
+        <div class="pakke-num">1</div>
+        <div class="status-badge badge-build"><span class="badge-dot"></span>Fase 3-4 · Naturvidenskabsfestival</div>
+        <h3>EarthJump — Jorden ringer</h3>
+        <p>Tusindvis af elever hopper samtidig. Telefonernes accelerometre måler rystelserne. Data samles og visualiseres live — og bagefter analyserer eleverne som seismologer. Præcis som Inge Lehmann i 1936.</p>
+        <a href="https://earthjump.dk" target="_blank" rel="noopener">earthjump.dk →</a>
+      </div>
+
+      <div class="status-card">
+        <div class="pakke-num">2</div>
+        <div class="status-badge badge-plan"><span class="badge-dot"></span>Under planlægning · Gymnasium</div>
+        <h3>Inge Lehmann-rollespillet</h3>
+        <p>Interaktivt webrollespil hvor eleven følger Lehmann fra 1929 til opdagelsen i 1936. Valg, konsekvenser, indtalt audio. Samme arkitektur som vores Galilei-rollespil — en bevist model.</p>
+        <a href="https://geo.sg.dk/himlen/galilei.html" target="_blank" rel="noopener">Se Galilei-rollespillet →</a>
+      </div>
+
+      <div class="status-card">
+        <div class="pakke-num">3</div>
+        <div class="status-badge badge-live"><span class="badge-dot"></span>Seismograf live · Grundskole + gymnasium</div>
+        <h3>Bølger med telefon og hverdagsting</h3>
+        <p>Eleverne bygger bølgeforsøg med spring, reb og vandbakker — og bruger deres egen telefon som seismograf. Hele klassen bliver ét seismisk netværk. Kroppen mærker bølgen før formlen introduceres.</p>
+        <a href="https://geo.sg.dk/seismograf/" target="_blank" rel="noopener">geo.sg.dk/seismograf →</a>
+      </div>
+
+      <div class="status-card">
+        <div class="pakke-num">4</div>
+        <div class="status-badge badge-live"><span class="badge-dot"></span>Prototype live · To niveauer</div>
+        <h3>Send et jordskælv gennem Jorden</h3>
+        <p>Interaktiv app i to versioner. Gymnasieversion med matematisk præcision, jordmodeller og IASP91. Folkelig version med lyd, farve og sanseligt formsprog — inspireret af Seismic Sound Lab.</p>
+        <a href="https://komtilkernen.dk/app" target="_blank" rel="noopener">komtilkernen.dk/app →</a>
+      </div>
+
+      <div class="status-card">
+        <div class="pakke-num">5</div>
+        <div class="status-badge badge-plan"><span class="badge-dot"></span>Idé · Bred befolkning + gymnasium</div>
+        <h3>Tonespor for jordskælv</h3>
+        <p>Seismisk visualizer. Vælg et jordskælv — oplev det som lyd, farve og form på samme tid. Inspireret af Lejf Marcussens animationsfilm Tonespor (1983) og Seismic Sound Lab. Kunst funderet i data.</p>
+        <a href="https://geo.sg.dk/geoseis/" target="_blank" rel="noopener">Nuværende analyseværktøj →</a>
       </div>
     </div>
   </div>

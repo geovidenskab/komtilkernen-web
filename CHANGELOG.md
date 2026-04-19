@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.0] — 2026-04-19
+### Tilføjet
+- Ny sektion "Pakkerne — Fem aktiviteter, én fortælling" mellem "Hvad vi vil" og "Hvem er vi"
+- Fem aktivitetskort: EarthJump, Inge Lehmann-rollespillet, Bølgeeksperimenter + telefon-seismograf, "Send et jordskælv gennem Jorden" (to niveauer), Tonespor for jordskælv (seismisk visualizer)
+- Hvert kort har pakke-nummer (Newsreader kursiv, cyan), status-badge, beskrivelse og link til prototype/reference
+- Link til Galilei-rollespillet (geo.sg.dk/himlen/galilei.html) som proof-of-concept for pakke 2
+- Nav-link "Aktiviteter" tilføjet mellem "Hvad vi vil" og "Hvem er vi"
+
+### Ændret
+- Responsivt grid for aktivitetskort: 3+2 centreret på desktop, 1-kolonne på mobil
+
 ## [0.5.0] — 2026-03-25
 ### Ændret
 - Lyst og varmt design: hvid/varm-grå baggrunde på indholdssektioner
