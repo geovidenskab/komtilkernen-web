@@ -244,6 +244,15 @@ h1.title em{font-style:italic;font-weight:400;color:var(--core)}
   font-family:'IBM Plex Sans',sans-serif;
   letter-spacing:0;
 }
+.meta-foot span strong a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  transition:border-color .2s ease;
+}
+.meta-foot span strong a:hover{
+  border-bottom-color:var(--ink);
+}
 
 /* === FOOTER === */
 footer{
@@ -326,7 +335,7 @@ footer a:hover{border-bottom-color:var(--ink)}
     </div>
 
     <div class="meta-foot">
-      <span>Forfatter<strong>Philip · Silkeborg Gymnasium</strong></span>
+      <span>Forfatter<strong>Philip Kruse Jakobsen · <a href="https://sans.science/" target="_blank" rel="noopener">Sans Science</a> · Silkeborg Gymnasium</strong></span>
       <span>Kontakt<strong>philip@sans.science</strong></span>
       <span>Status<strong>Prototyper live · pre-pilot efterår 2026</strong></span>
       <span>Fondsansøgning<strong>Novo Nordisk Fonden, september 2026</strong></span>
