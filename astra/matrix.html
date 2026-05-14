@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kom til kernen · 15 spørgsmål til den fællesfaglige naturfagsprøve</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,800;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4efe4;
+  --paper:#fbf7ed;
+  --ink:#1d2620;
+  --ink-soft:#3a4a40;
+  --muted:#6c7a70;
+  --line:#dcd6c5;
+  --line-soft:#e8e2d2;
+  --core:#b94a2c;
+  --core-soft:#dc6e4f;
+  --core-faint:#f0d8cf;
+  /* Fagfarver */
+  --geo:#3a6b6e;
+  --geo-soft:#5a8e91;
+  --geo-faint:#dde9ea;
+  --bio:#5a7a35;
+  --bio-soft:#7d9e57;
+  --bio-faint:#e2eada;
+  --phys:#d99a4a;
+  --phys-soft:#e8b87a;
+  --phys-faint:#f3e4cd;
+  --shadow-sm:0 6px 18px rgba(40,52,44,.06);
+  --shadow:0 22px 60px rgba(40,52,44,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  font-feature-settings:'ss01','ss02','kern';
+  overflow-x:hidden;
+}
+
+.wrap{width:min(1240px,calc(100% - 48px));margin:0 auto}
+
+/* === HERO === */
+.hero{
+  position:relative;
+  padding:48px 0 88px;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 50% 70% at 80% 30%, rgba(185,74,44,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 15% 90%, rgba(58,107,110,.05) 0%, transparent 70%),
+    var(--bg);
+  border-bottom:1px solid var(--line);
+}
+
+.hero .wrap{position:relative;z-index:2}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:80px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.topbar .mark{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.topbar .mark .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--core);
+  box-shadow:0 0 0 3px rgba(185,74,44,.15);
+}
+.topbar a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.topbar a:hover{color:var(--ink);border-color:var(--ink)}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.82rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--core);
+  margin-bottom:32px;
+  display:inline-block;
+  border-top:1px solid var(--core);
+  border-bottom:1px solid var(--core);
+  padding:8px 0;
+}
+
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:clamp(2.6rem, 7vw, 5.6rem);
+  line-height:.95;
+  letter-spacing:-.035em;
+  color:var(--ink);
+  margin-bottom:32px;
+  font-variation-settings:"opsz" 144;
+  max-width:18ch;
+}
+h1.title em{font-style:italic;font-weight:400;color:var(--core)}
+
+.lede{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-size:clamp(1.15rem, 1.7vw, 1.4rem);
+  line-height:1.55;
+  color:var(--ink-soft);
+  max-width:64ch;
+  margin-bottom:40px;
+  font-variation-settings:"opsz" 24;
+}
+
+.intro-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-left:3px solid var(--core);
+  padding:24px 28px;
+  max-width:78ch;
+  margin-bottom:36px;
+}
+.intro-card .label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--core);
+  margin-bottom:8px;
+}
+.intro-card p{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.2rem;
+  color:var(--ink);
+  line-height:1.5;
+  font-variation-settings:"opsz" 36;
+}
+
+.meta-row{
+  display:flex;
+  gap:36px;
+  flex-wrap:wrap;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.05em;
+  color:var(--muted);
+}
+.meta-row span strong{
+  display:block;
+  color:var(--ink);
+  font-weight:600;
+  font-size:.92rem;
+  margin-top:4px;
+  font-family:'IBM Plex Sans',sans-serif;
+  letter-spacing:0;
+}
+
+/* === ARC === */
+.arc-section{
+  padding:72px 0 0;
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.section-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.section-eyebrow::before{
+  content:"";
+  display:block;
+  width:32px;height:1px;
+  background:var(--core);
+}
+
+h2.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-size:clamp(2rem, 4vw, 3.2rem);
+  line-height:1;
+  letter-spacing:-.025em;
+  color:var(--ink);
+  margin-bottom:24px;
+  font-variation-settings:"opsz" 96;
+}
+h2.section-title em{font-style:italic;color:var(--core)}
+
+.section-lede{
+  font-family:'Fraunces',serif;
+  font-size:1.1rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+  max-width:68ch;
+  font-variation-settings:"opsz" 24;
+}
+
+.arc{
+  margin-top:48px;
+  padding:36px 0 56px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:8px;
+  position:relative;
+}
+@media (min-width:760px){
+  .arc{grid-template-columns:repeat(5, 1fr);gap:0;align-items:start}
+}
+.arc-step{
+  position:relative;
+  padding:0 12px 0 0;
+  text-align:left;
+}
+.arc-num{
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:2.6rem;
+  line-height:1;
+  letter-spacing:-.03em;
+  color:var(--core);
+  margin-bottom:8px;
+  font-variation-settings:"opsz" 96;
+}
+.arc-step h4{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.1rem;
+  letter-spacing:-.01em;
+  margin-bottom:4px;
+  color:var(--ink);
+}
+.arc-step p{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.06em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+@media (min-width:760px){
+  .arc-step:not(:last-child)::after{
+    content:"→";
+    position:absolute;
+    right:6px;top:12px;
+    color:var(--line);
+    font-size:1.4rem;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+}
+
+/* === FILTER === */
+.filter-section{
+  padding:72px 0 32px;
+  background:var(--paper);
+}
+.filter-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  padding:20px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.filter-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.74rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-right:8px;
+}
+.chip{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:.82rem;
+  font-weight:500;
+  letter-spacing:.01em;
+  color:var(--ink);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:7px 16px;
+  cursor:pointer;
+  transition:all .18s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.chip:hover{border-color:var(--ink);transform:translateY(-1px)}
+.chip .swatch{
+  width:9px;height:9px;border-radius:50%;
+  display:inline-block;
+}
+.chip[data-fag="geo"] .swatch{background:var(--geo)}
+.chip[data-fag="bio"] .swatch{background:var(--bio)}
+.chip[data-fag="phys"] .swatch{background:var(--phys)}
+.chip[data-fag="all"] .swatch{background:linear-gradient(135deg, var(--geo), var(--bio), var(--phys))}
+
+.chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip.active .swatch{box-shadow:0 0 0 2px rgba(251,247,237,.4)}
+
+/* === MATRIX === */
+.matrix-section{
+  padding:32px 0 100px;
+  background:var(--paper);
+}
+
+.theme{
+  margin-bottom:60px;
+  border-top:1px solid var(--line);
+  padding-top:40px;
+}
+.theme:first-child{border-top:none;padding-top:8px}
+
+.theme-header{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  align-items:end;
+  margin-bottom:32px;
+}
+@media (min-width:900px){
+  .theme-header{grid-template-columns:1fr auto;gap:48px}
+}
+
+.theme-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.74rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--core);
+  margin-bottom:8px;
+}
+
+.theme-header h3{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-size:clamp(1.7rem, 3vw, 2.4rem);
+  line-height:1.1;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  font-variation-settings:"opsz" 60;
+  margin-bottom:8px;
+}
+.theme-header h3 em{font-style:italic;color:var(--ink-soft)}
+
+.theme-desc{
+  font-family:'Fraunces',serif;
+  font-size:1rem;
+  line-height:1.6;
+  color:var(--ink-soft);
+  max-width:60ch;
+  font-variation-settings:"opsz" 18;
+}
+
+.theme-stage{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.74rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-align:right;
+  padding:8px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  white-space:nowrap;
+  align-self:start;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+@media (min-width:760px){
+  .cards{grid-template-columns:repeat(3, 1fr)}
+}
+
+.card{
+  border:1px solid var(--line);
+  border-top:3px solid var(--line);
+  border-radius:4px;
+  padding:24px 22px;
+  background:#fff;
+  position:relative;
+  transition:all .25s ease;
+  display:flex;
+  flex-direction:column;
+  cursor:pointer;
+  min-height:200px;
+}
+.card.hidden{display:none}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
+
+.card[data-fag="geo"]{border-top-color:var(--geo);background:linear-gradient(180deg, var(--geo-faint) 0%, #fff 65px)}
+.card[data-fag="bio"]{border-top-color:var(--bio);background:linear-gradient(180deg, var(--bio-faint) 0%, #fff 65px)}
+.card[data-fag="phys"]{border-top-color:var(--phys);background:linear-gradient(180deg, var(--phys-faint) 0%, #fff 65px)}
+
+.card-fag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:500;
+}
+.card[data-fag="geo"] .card-fag{color:var(--geo)}
+.card[data-fag="bio"] .card-fag{color:var(--bio)}
+.card[data-fag="phys"] .card-fag{color:var(--phys)}
+.card-fag::before{
+  content:"";
+  width:6px;height:6px;border-radius:50%;
+  display:inline-block;
+}
+.card[data-fag="geo"] .card-fag::before{background:var(--geo)}
+.card[data-fag="bio"] .card-fag::before{background:var(--bio)}
+.card[data-fag="phys"] .card-fag::before{background:var(--phys)}
+
+.card-q{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.08rem;
+  line-height:1.35;
+  color:var(--ink);
+  letter-spacing:-.005em;
+  margin-bottom:14px;
+  font-variation-settings:"opsz" 24;
+  flex-grow:1;
+}
+
+.card-detail{
+  font-size:.88rem;
+  line-height:1.5;
+  color:var(--ink-soft);
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease, margin-top .35s ease;
+  margin-top:0;
+}
+.card.expanded .card-detail{
+  max-height:600px;
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px dashed var(--line);
+}
+.card-detail strong{
+  display:block;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+  margin-top:10px;
+  margin-bottom:4px;
+}
+.card-detail strong:first-child{margin-top:0}
+.card-detail em{
+  color:var(--ink);
+  font-style:italic;
+}
+
+.card-toggle{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin-top:auto;
+  padding-top:12px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.card-toggle .arrow{
+  display:inline-block;
+  transition:transform .25s ease;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.card.expanded .card-toggle .arrow{transform:rotate(90deg)}
+.card.expanded .card-toggle .more{display:none}
+.card.expanded .card-toggle .less{display:inline}
+.card-toggle .less{display:none}
+
+/* === FOOT === */
+.footer-section{
+  padding:60px 0 80px;
+  border-top:1px solid var(--line);
+  background:var(--bg);
+}
+.footer-section .wrap{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:24px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.05em;
+  color:var(--muted);
+}
+.footer-section a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.footer-section a:hover{border-bottom-color:var(--ink)}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero h1.title,
+.hero .lede,
+.hero .intro-card,
+.hero .meta-row,
+.hero .eyebrow{
+  animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero .eyebrow{animation-delay:.05s}
+.hero h1.title{animation-delay:.15s}
+.hero .lede{animation-delay:.32s}
+.hero .intro-card{animation-delay:.46s}
+.hero .meta-row{animation-delay:.6s}
+
+@media print{
+  body{background:#fff}
+  .hero,.arc-section,.filter-section,.matrix-section,.footer-section{padding:24px 0}
+  .card{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border:1px solid #999}
+  .card-detail{max-height:none !important;margin-top:14px !important;padding-top:14px !important;border-top:1px dashed #ccc !important}
+  .card-toggle{display:none}
+  .filter-row{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="mark"><span class="dot"></span>komtilkernen.dk · pakke 2</span>
+      <span><a href="https://komtilkernen.dk/">tilbage til komtilkernen.dk</a></span>
+    </div>
+
+    <span class="eyebrow">Lyt til Jorden med Inge Lehmann</span>
+
+    <h1 class="title">15 spørgsmål til den <em>fællesfaglige</em> naturfagsprøve.</h1>
+
+    <p class="lede">
+      Et sanseforstærket forløb til udskolingens 7.–9. klasse med Inge Lehmann og Jordens indre. Bygget op om fem temaer i en dramaturgisk bue, med ét spørgsmål til hvert af de tre naturfag i hvert tema — i alt femten åbne spørgsmål, der kan kombineres som ét fællesfagligt forløb eller plukkes fra enkeltvis.
+    </p>
+
+    <div class="intro-card">
+      <div class="label">Fælles intro-spørgsmål · hele forløbet</div>
+      <p>Hvis I skulle finde ud af, hvad der er inden i et æg uden at åbne det — hvad ville I gøre?</p>
+    </div>
+
+    <div class="meta-row">
+      <span>Målgruppe<strong>7.–9. klasse</strong></span>
+      <span>Fag<strong>Biologi · Geografi · Fysik/kemi</strong></span>
+      <span>Forankring<strong>Naturvidenskabens ABC, Erkendelse 2</strong></span>
+      <span>Format<strong>15 dele · modulært eller samlet</strong></span>
+    </div>
+  </div>
+</header>
+
+<!-- ARC -->
+<section class="arc-section">
+  <div class="wrap">
+    <div class="section-eyebrow">Dramaturgisk bue</div>
+    <h2 class="section-title">Fra <em>mysterie</em> til konklusion.</h2>
+    <p class="section-lede">
+      De fem temaer følger Lehmanns egen vej fra mysterie til konklusion. Eleverne træder ind på samme rejse — først undres de over hvad der gemmer sig dybt nede, så lærer de at læse Jordens signaler, så forstår de bølgernes opførsel, så samles det hele i Lehmanns detektivarbejde, og endelig perspektiveres opdagelsen til vores planets beboelighed.
+    </p>
+
+    <div class="arc">
+      <div class="arc-step">
+        <div class="arc-num">1</div>
+        <h4>Mysteriet</h4>
+        <p>Hvad er derinde?</p>
+      </div>
+      <div class="arc-step">
+        <div class="arc-num">2</div>
+        <h4>Signalerne</h4>
+        <p>Jordskælv som data</p>
+      </div>
+      <div class="arc-step">
+        <div class="arc-num">3</div>
+        <h4>Værktøjet</h4>
+        <p>Bølgers opførsel</p>
+      </div>
+      <div class="arc-step">
+        <div class="arc-num">4</div>
+        <h4>Detektivarbejdet</h4>
+        <p>Lehmann selv</p>
+      </div>
+      <div class="arc-step">
+        <div class="arc-num">5</div>
+        <h4>Konsekvensen</h4>
+        <p>Planeten som hjem</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<section class="filter-section">
+  <div class="wrap">
+    <div class="filter-row">
+      <span class="filter-label">Filtrér fag:</span>
+      <button class="chip active" data-fag="all"><span class="swatch"></span>Alle 15</button>
+      <button class="chip" data-fag="geo"><span class="swatch"></span>Geografi</button>
+      <button class="chip" data-fag="bio"><span class="swatch"></span>Biologi</button>
+      <button class="chip" data-fag="phys"><span class="swatch"></span>Fysik/kemi</button>
+      <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.06em">klik et kort for detaljer</span>
+    </div>
+  </div>
+</section>
+
+<!-- MATRIX -->
+<section class="matrix-section">
+  <div class="wrap">
+
+    <!-- TEMA 1 -->
+    <div class="theme">
+      <div class="theme-header">
+        <div>
+          <div class="theme-num">Tema 1 / 5</div>
+          <h3>Kan vi <em>komme derned?</em></h3>
+          <p class="theme-desc">Vi vil ind i Jorden, men kan ikke komme det. Hvordan finder vi alligevel ud af, hvad der er derinde? Eleverne opdager, at indirekte observation er en gyldig — og ofte den eneste — videnskabelige metode.</p>
+        </div>
+        <div class="theme-stage">Mysteriet</div>
+      </div>
+
+      <div class="cards">
+        <article class="card" data-fag="geo">
+          <div class="card-fag">Geografi</div>
+          <div class="card-q">Hvad tror I er det dybeste hul, mennesket nogensinde har gravet — og hvor langt nåede vi?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Eleverne tegner et tværsnit af Jorden i 1:4.000.000 målestok på en lang strimmel papir (radius ~1,6 m), og indtegner Kola-borets dybde på 12,3 km (~3 mm). De opdager visuelt, at vi er nået 0,19% af vejen til centrum.
+            <strong>Faglig substans</strong>
+            Kola Superdeep Borehole (1970–1992) nåede 12.262 m og blev stoppet af temperaturen (180 °C). Vi kan ikke komme derned. Hvis vi skal vide noget om kernen, må vi bruge andet end skovle.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="bio">
+          <div class="card-fag">Biologi</div>
+          <div class="card-q">Hvordan finder lægen ud af, hvad der gemmer sig inde i din krop, uden at skære dig op?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Fire faste stationer: stetoskop på brystkasse (lub-dub), stetoskop på maven (tarmlyde), pulsen seks steder (håndled, hals, lyske, knæhase, fodryg, tinding), åndedræt gennem pap-rulle. Kropslig undersøgelse, ikke teknologisk.
+            <strong>Faglig substans</strong>
+            Lægens første værktøj er øre, hænder og øjne: auskultation, perkussion, palpation, inspektion. Kroppen er et lukket system der konstant afgiver signaler indefra — samme princip som geofysik bruger på Jorden.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="phys">
+          <div class="card-fag">Fysik/kemi</div>
+          <div class="card-q">Hvor stille skal vi være, før et lille apparat på gulvet kan registrere, at I trækker vejret?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Seismograf-app på en mobil lægges på gulvet. Eleverne prøver at gå stille, sætte sig ned, lade luften være helt rolig. De ser tydeligt på skærmen at det aldrig bliver helt stille.
+            <strong>Faglig substans</strong>
+            Seismografers følsomhed, baggrundsstøj, signal vs. støj. MEMS-sensoren i moderne smartphones kan registrere accelerationer ned til milli-g — nok til at fange M5-jordskælv ved op til 10 km afstand (MyShake, Berkeley).
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- TEMA 2 -->
+    <div class="theme">
+      <div class="theme-header">
+        <div>
+          <div class="theme-num">Tema 2 / 5</div>
+          <h3>Hvor kommer <em>rystelserne</em> fra?</h3>
+          <p class="theme-desc">Temaet behandler kilden: jordskælv som signaler. Hvad gør, at Jorden ryster? Og hvad fortæller rystelserne os om planeten — om dens dynamik, dens grænser og dens beboere?</p>
+        </div>
+        <div class="theme-stage">Signalerne</div>
+      </div>
+
+      <div class="cards">
+        <article class="card" data-fag="geo">
+          <div class="card-fag">Geografi</div>
+          <div class="card-q">Hvis kontinenterne driver rundt på Jordens overflade — hvorfor flyder de så ikke væk fra hinanden?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Eleverne bruger hænderne som to plader og afprøver alle tre slags pladegrænser (divergent, konvergent, transform). Europa og Nordamerika driver fra hinanden med 2–4 cm/år — sammenligneligt med neglevækst.
+            <strong>Faglig substans</strong>
+            Pladetektonik, konvektion i kappen, varmestrøm fra kernen. De tre pladegrænser: Mid-Atlantic Ridge (divergent), Andesbjergene (konvergent), San Andreas (transform). Knytter direkte til <em>geo.sg.dk/plade</em>.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="bio">
+          <div class="card-fag">Biologi</div>
+          <div class="card-q">Hvad gør elefanter, fugle og edderkopper kort før et jordskælv — og hvad betyder det?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Eleverne undersøger edderkop-sansehår under lup, og lægger sig på gulvet med fingrene let på underlaget mens en klassekammerat går eller hopper. De mærker hvor præcist man kan opfatte vibrationer gennem kontaktflader.
+            <strong>Faglig substans</strong>
+            Mekanoreception hos dyr: elefanters fodpuder fanger lavfrekvente seismiske signaler over kilometer, fugle reagerer på P-bølger (kommer før S), edderkopper bruger trichobothria til at lokalisere bytte via vibration.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="phys">
+          <div class="card-fag">Fysik/kemi</div>
+          <div class="card-q">Hvis I hopper så hårdt I kan, hvor langt væk kan rystelserne så registreres?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Eleverne hopper på rad og række, og en mobil med seismograf-app registrerer rystelserne i forskellige afstande. De ser amplituden falde med afstanden.
+            <strong>Faglig substans</strong>
+            Energi, amplitude, dæmpning. Richter-skalaen som logaritmisk — et 8-skælv frigiver 32 gange mere energi end et 7-skælv. Signalstyrken aftager med afstanden.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- TEMA 3 -->
+    <div class="theme">
+      <div class="theme-header">
+        <div>
+          <div class="theme-num">Tema 3 / 5</div>
+          <h3>Hvordan opfører <em>bølgerne sig?</em></h3>
+          <p class="theme-desc">Det mest fysisk-tunge tema, men afgørende for at forstå Lehmanns argument i tema 4. Eleverne arbejder med bølgers opførsel i forskellige medier — fra hvalsangens vandrejse til seismiske bølgers brydning ved Jordens grænseflader.</p>
+        </div>
+        <div class="theme-stage">Værktøjet</div>
+      </div>
+
+      <div class="cards">
+        <article class="card" data-fag="geo">
+          <div class="card-fag">Geografi</div>
+          <div class="card-q">Hvis et stort jordskælv sker i Chile, er der så et sted på Jorden, hvor man slet ikke kan måle det?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Eleverne får udleveret ankomsttider fra fem seismografstationer fordelt på kloden og en globus. De skal selv finde ud af om der er et sted, hvor signalerne udebliver. Det er præcis Lehmanns udgangspunkt — uden hint fra læreren.
+            <strong>Faglig substans</strong>
+            Skyggezonen 104°–140°, hvor direkte P-bølger brydes kraftigt ved grænsen til den flydende ydre kerne. Den autentiske forskersituation: eleverne arbejder sig frem til en anomali — det er præcis dér, Lehmann begyndte sit arbejde i 1929.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="bio">
+          <div class="card-fag">Biologi</div>
+          <div class="card-q">Hvorfor kan en hval høre en anden hval på den anden side af havet, men I næsten ikke kan høre dem fra båden?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            "Menneskelig flagermus" — bind for øjnene og lokalisering af en bog ved klap og ekko. Stemmegaffel-forsøget: lytte til gaflen i luft, mod bordkant, mod glas vand. Mediet ændrer alt.
+            <strong>Faglig substans</strong>
+            Knølhvalens sang foregår 30–4000 Hz og rejser via SOFAR-kanalen hundredevis af km. Melonen (akustisk linse), kæbebenet som lydopfanger. Flagermus bruger 200 kHz for rumlig opløsning. Bølger rejser hurtigere i tættere medier — samme grundlov som lader P-bølger gå 8–13 km/s gennem kappen.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="phys">
+          <div class="card-fag">Fysik/kemi</div>
+          <div class="card-q">Kan I lave en bølge med en slinky, der KUN kan løbe gennem noget fast? Og en, der kan begge dele?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Eleverne fremstiller selv P- og S-bølger med en slinky. De prøver at sende dem gennem en spand vand og en ikke-newtonsk ketchup-blanding. De ser at S-bølger ikke kan udbrede sig i væsker.
+            <strong>Faglig substans</strong>
+            P-bølger (kompression) udbreder sig i alle medier. S-bølger (shear) kræver fast medium, fordi væsker mangler forskydningsstyrke. <em>Lehmanns nøgleværktøj</em>: forskellen mellem to bølgetyper gør indre struktur synlig.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- TEMA 4 -->
+    <div class="theme">
+      <div class="theme-header">
+        <div>
+          <div class="theme-num">Tema 4 / 5</div>
+          <h3>Hvordan løste <em>Lehmann gåden?</em></h3>
+          <p class="theme-desc">Forløbets dramatiske midte. Her samles den fysiske forståelse fra de tre første temaer til selve detektivarbejdet — og fortællingen om Lehmann træder frem som rygrad. Rollespillet <em>Da jorden åbnede sig</em> kobler sig særligt tæt her.</p>
+        </div>
+        <div class="theme-stage">Detektivarbejdet</div>
+      </div>
+
+      <div class="cards">
+        <article class="card" data-fag="geo">
+          <div class="card-fag">Geografi</div>
+          <div class="card-q">Hvordan kunne en kvinde i Søborg uden computer regne sig frem til, at Jordens inderste kerne er fast?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Eleverne får udleveret papkort med ankomsttider fra forskellige stationer — præcis som Lehmann arbejdede. De prøver at sortere dem i bunker efter afstand.
+            <strong>Faglig substans</strong>
+            Hannah Adlers fællesskole. Cambridge i 1910'erne. Magisterkonferens i geodæsi 1928 som første kvinde i verden. Konflikten med Nørlund. Papkort i havremelæsker på Søbakkevej. PKiKP-bølgen som "smoking gun" i 1936-artiklen "P′". Vigtig præcisering: Lehmann viste grænsefladen — at kernen er <em>fast</em> blev først bekræftet i 1971.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="bio">
+          <div class="card-fag">Biologi</div>
+          <div class="card-q">Hvordan finder edderkoppen fluen i sit net uden at se den?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            "Spindelvæv af snor" — eleverne bygger et net mellem fire stole med knudepunkt i midten. Med bind for øjnene og hånden på knudepunktet peger en elev hvor på nettet en partner rører. Lokalisering ud fra ankomsttider og amplitude.
+            <strong>Faglig substans</strong>
+            Edderkoppens detektion via tricho­bothria på benene. Forskellige ankomsttider på de otte ben tillader triangulering — samme princip Lehmann anvendte med seismografstationer.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="phys">
+          <div class="card-fag">Fysik/kemi</div>
+          <div class="card-q">Hvis to seismografer i Aarhus og Tokyo registrerer det samme jordskælv — hvor præcist kan I placere det?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Eleverne arbejder med passer på et verdenskort og triangulerer et fiktivt jordskælv. To stationer giver to mulige punkter, tre stationer låser positionen.
+            <strong>Faglig substans</strong>
+            Triangulering, S–P-tidsforskellen som afstandsmåler, rejsetidskurver. Samme matematik som edderkoppen. Eksisterende værktøjer: <em>geo.sg.dk/epicenter</em> og <em>tsunamiwatch</em>.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- TEMA 5 -->
+    <div class="theme">
+      <div class="theme-header">
+        <div>
+          <div class="theme-num">Tema 5 / 5</div>
+          <h3>Hvorfor betyder <em>det noget?</em></h3>
+          <p class="theme-desc">Det mest perspektiverende og aktuelle tema. Lehmanns opdagelse er ikke et lukket kapitel — den er forudsætningen for at forstå et af nutidens åbne forskningsspørgsmål: Hvorfor har Jorden et magnetfelt? Her går vi længere end alt eksisterende grundskolemateriale.</p>
+        </div>
+        <div class="theme-stage">Konsekvensen</div>
+      </div>
+
+      <div class="cards">
+        <article class="card" data-fag="geo">
+          <div class="card-fag">Geografi</div>
+          <div class="card-q">Hvorfor er Mars rød og død, mens Jorden er blå og levende?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Eleverne kigger på fotografier af Mars og Jorden side om side. Hvad ser anderledes ud? Hvad kan forklare det?
+            <strong>Faglig substans</strong>
+            Komparativ planetologi. Mars havde engang et magnetfelt — vi ser aftryk i kraftigt magnetiserede skorpeområder på den sydlige halvkugle. Kølnede hurtigere (kun 11% af Jordens masse), mistede pladetektonikken, mistede magnetfeltet, mistede atmosfæren. Vores planet er beboelig fordi den indre kerne stadig krystalliserer.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="bio">
+          <div class="card-fag">Biologi</div>
+          <div class="card-q">Hvordan finder en trækfugl, en havskildpadde eller en bakterie vej — og hvad har det med Jordens kerne at gøre?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Egen retningssans: bind for øjnene, gå 20 skridt lige ud, drej 180°, gå tilbage. De fleste driver 5–15° til siden. Magnetotaktiske bakterier (valgfri demo): mudderprøve i rør med kraftig magnet i siden — efter 24 timer ses bakterier samlet ved magneten under mikroskop.
+            <strong>Faglig substans</strong>
+            Magnetit-baseret magnetreception hos laks, brevduer, bakterier (Fe₃O₄-krystaller, 2 mia. år gammel evolution). Kvantebiologisk cryptochrom hos trækfugle. Jordens magnetfelt drives af konvektion af smeltet jern i ydre kerne — den indre kernes krystallisation er motoren. Uden den: ingen magnetfelt, ingen beskyttelse mod solvind, ingen atmosfære.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+
+        <article class="card" data-fag="phys">
+          <div class="card-fag">Fysik/kemi</div>
+          <div class="card-q">Kan I se noget bevæge sig, der ikke rører ved noget?</div>
+          <div class="card-detail">
+            <strong>Sanseindgang</strong>
+            Klassisk forsøg med jernfilspåner på papir og magnet under. Feltlinjerne tegner sig. To kompasser ved siden af hinanden begynder at påvirke hinanden ved bevægelse.
+            <strong>Faglig substans</strong>
+            Magnetiske felter, induktion, elektromagnetisme. Geodynamoen i Jordens ydre kerne. <em>The new core paradox</em> (Olson 2013): Jorden havde magnetfelt for 3,4 mia. år siden, men den faste indre kerne er måske kun 1–1,5 mia. år gammel. Åbent forskningsspørgsmål — eleverne møder grænsen for vores viden.
+          </div>
+          <div class="card-toggle"><span class="arrow">›</span> <span class="more">vis detaljer</span><span class="less">skjul</span></div>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-section">
+  <div class="wrap">
+    <span>Kom til kernen · Pakke 2 · Maj 2026</span>
+    <span><a href="https://komtilkernen.dk/">komtilkernen.dk</a> · <a href="https://geo.sg.dk/">geo.sg.dk</a></span>
+  </div>
+</footer>
+
+<script>
+// Filter
+const chips = document.querySelectorAll('.chip');
+const cards = document.querySelectorAll('.card');
+chips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const fag = chip.dataset.fag;
+    cards.forEach(card => {
+      if (fag === 'all' || card.dataset.fag === fag) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// Expand/collapse cards
+cards.forEach(card => {
+  card.addEventListener('click', (e) => {
+    card.classList.toggle('expanded');
+  });
+});
+</script>
+
+</body>
+</html>

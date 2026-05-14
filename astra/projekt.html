@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kom til kernen · Projektpræsentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4efe4;
+  --paper:#fbf7ed;
+  --ink:#1d2620;
+  --ink-soft:#3a4a40;
+  --muted:#6c7a70;
+  --line:#dcd6c5;
+  --line-soft:#e8e2d2;
+  --core:#b94a2c;
+  --core-soft:#dc6e4f;
+  --mantle:#d99a4a;
+  --mantle-soft:#e8b87a;
+  --crust:#3a6b6e;
+  --crust-soft:#5a8e91;
+  --accent:#83cbd4;
+  --shadow-sm:0 6px 18px rgba(40,52,44,.06);
+  --shadow:0 22px 60px rgba(40,52,44,.10);
+  --shadow-lg:0 36px 90px rgba(40,52,44,.14);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  font-feature-settings:'ss01','ss02','kern';
+  overflow-x:hidden;
+}
+
+.wrap{width:min(1180px,calc(100% - 48px));margin:0 auto}
+
+/* === HERO === */
+.hero{
+  position:relative;
+  min-height:96vh;
+  padding:48px 0 72px;
+  display:grid;
+  align-items:end;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 80% at 75% 40%, rgba(185,74,44,.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(58,107,110,.06) 0%, transparent 70%),
+    var(--bg);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  right:-20%;
+  top:8%;
+  width:65vw;
+  max-width:780px;
+  height:65vw;
+  max-height:780px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 30%,
+      rgba(255,255,255,.55) 0%,
+      rgba(217,154,74,.18) 12%,
+      rgba(217,154,74,.08) 24%,
+      rgba(58,107,110,.05) 38%,
+      rgba(185,74,44,.10) 52%,
+      rgba(185,74,44,.22) 64%,
+      rgba(185,74,44,.45) 80%);
+  filter:blur(.4px);
+  opacity:.85;
+  z-index:0;
+  pointer-events:none;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent 0%, var(--line) 12%, var(--line) 88%, transparent 100%);
+}
+
+.hero .wrap{position:relative;z-index:2}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:96px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.topbar .mark{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.topbar .mark .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--core);
+  box-shadow:0 0 0 3px rgba(185,74,44,.15);
+}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.82rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--core);
+  margin-bottom:32px;
+  display:inline-block;
+  padding:6px 0;
+  border-top:1px solid var(--core);
+  border-bottom:1px solid var(--core);
+  padding:8px 0;
+}
+
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:clamp(3.8rem, 11vw, 9rem);
+  line-height:.88;
+  letter-spacing:-.045em;
+  color:var(--ink);
+  margin-bottom:36px;
+  font-variation-settings:"opsz" 144;
+  max-width:11ch;
+}
+
+h1.title em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--core);
+}
+
+.lede{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-size:clamp(1.25rem, 2vw, 1.55rem);
+  line-height:1.5;
+  color:var(--ink-soft);
+  max-width:62ch;
+  margin-bottom:48px;
+  font-variation-settings:"opsz" 24;
+}
+
+.meta-row{
+  display:flex;
+  gap:36px;
+  flex-wrap:wrap;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.05em;
+  color:var(--muted);
+}
+.meta-row span strong{
+  display:block;
+  color:var(--ink);
+  font-weight:600;
+  font-size:.92rem;
+  margin-top:4px;
+  font-family:'IBM Plex Sans',sans-serif;
+  letter-spacing:0;
+}
+
+/* === SECTIONS === */
+.section{padding:100px 0;position:relative}
+.section.alt{background:var(--paper)}
+.section.alt::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:var(--line);
+}
+
+.section-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.section-eyebrow::before{
+  content:"";
+  display:block;
+  width:32px;height:1px;
+  background:var(--core);
+}
+
+h2.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-size:clamp(2.4rem, 5.5vw, 4.4rem);
+  line-height:.96;
+  letter-spacing:-.03em;
+  color:var(--ink);
+  max-width:18ch;
+  margin-bottom:28px;
+  font-variation-settings:"opsz" 96;
+}
+
+h2.section-title em{
+  font-style:italic;
+  color:var(--core);
+}
+
+.section-lede{
+  font-family:'Fraunces',serif;
+  font-size:1.18rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+  max-width:64ch;
+  font-variation-settings:"opsz" 24;
+}
+
+/* === IDEA / PITCH === */
+.pitch{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:56px;
+  margin-top:64px;
+}
+@media (min-width:920px){
+  .pitch{grid-template-columns:1.1fr 1fr;align-items:start;gap:80px}
+}
+
+.pitch-quote{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-style:italic;
+  font-size:clamp(1.45rem, 2.6vw, 2rem);
+  line-height:1.35;
+  color:var(--ink);
+  letter-spacing:-.01em;
+  font-variation-settings:"opsz" 96;
+  position:relative;
+  padding-left:0;
+}
+.pitch-quote::before{
+  content:"„";
+  position:absolute;
+  top:-.4em;left:-.5em;
+  font-size:3em;
+  color:var(--core);
+  font-style:normal;
+  line-height:1;
+  opacity:.5;
+}
+
+.pitch-pillars{
+  display:grid;
+  gap:24px;
+}
+.pillar{
+  border-top:1px solid var(--line);
+  padding-top:20px;
+}
+.pillar-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.74rem;
+  letter-spacing:.12em;
+  color:var(--core);
+  margin-bottom:8px;
+}
+.pillar h4{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:1.18rem;
+  letter-spacing:-.01em;
+  margin-bottom:6px;
+  color:var(--ink);
+}
+.pillar p{
+  color:var(--ink-soft);
+  font-size:.96rem;
+  line-height:1.55;
+}
+
+/* === PACKAGES === */
+.packages{
+  margin-top:72px;
+  display:grid;
+  gap:32px;
+}
+
+.pkg{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:0;
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s ease, box-shadow .3s ease;
+  display:grid;
+  grid-template-columns:1fr;
+}
+@media (min-width:880px){
+  .pkg{grid-template-columns:280px 1fr}
+}
+
+.pkg:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow);
+}
+
+.pkg-side{
+  padding:36px 32px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:200px;
+}
+@media (min-width:880px){
+  .pkg-side{
+    border-bottom:none;
+    border-right:1px solid var(--line);
+  }
+}
+
+.pkg-1 .pkg-side{background:linear-gradient(155deg, rgba(185,74,44,.08), rgba(185,74,44,.02))}
+.pkg-2 .pkg-side{background:linear-gradient(155deg, rgba(217,154,74,.10), rgba(217,154,74,.02))}
+.pkg-3 .pkg-side{background:linear-gradient(155deg, rgba(58,107,110,.08), rgba(58,107,110,.02))}
+
+.pkg-num{
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:5.5rem;
+  line-height:.9;
+  letter-spacing:-.04em;
+  color:var(--ink);
+  font-variation-settings:"opsz" 144;
+}
+.pkg-1 .pkg-num{color:var(--core)}
+.pkg-2 .pkg-num{color:var(--mantle)}
+.pkg-3 .pkg-num{color:var(--crust)}
+
+.pkg-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:auto;
+  padding-top:24px;
+}
+
+.pkg-body{
+  padding:40px 36px 36px;
+}
+
+.pkg-body h3{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.7rem;
+  line-height:1.15;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  margin-bottom:6px;
+  font-variation-settings:"opsz" 48;
+}
+.pkg-body h3 em{font-style:italic;color:var(--ink-soft);font-weight:400}
+
+.pkg-body .audience{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+.pkg-body p{
+  color:var(--ink-soft);
+  margin-bottom:14px;
+  font-size:1rem;
+  line-height:1.6;
+}
+
+.pkg-links{
+  margin-top:22px;
+  padding-top:22px;
+  border-top:1px dashed var(--line);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.pkg-link{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.02em;
+  color:var(--ink);
+  text-decoration:none;
+  padding:8px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  transition:all .2s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  white-space:nowrap;
+}
+.pkg-link::before{
+  content:"→";
+  display:inline-block;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:.92rem;
+}
+.pkg-link:hover{
+  background:var(--ink);
+  color:var(--paper);
+  border-color:var(--ink);
+  transform:translateY(-1px);
+}
+.pkg-link.live::after{
+  content:"LIVE";
+  font-size:.62rem;
+  background:var(--core);
+  color:#fff;
+  padding:2px 5px;
+  border-radius:3px;
+  letter-spacing:.06em;
+  margin-left:4px;
+}
+
+/* === DIDAKTIK === */
+.didaktik-grid{
+  margin-top:64px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+  border-top:1px solid var(--line);
+}
+@media (min-width:780px){
+  .didaktik-grid{grid-template-columns:repeat(3, 1fr)}
+}
+
+.didaktik-cell{
+  padding:36px 0;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+@media (min-width:780px){
+  .didaktik-cell{
+    padding:40px 32px;
+    border-bottom:none;
+    border-right:1px solid var(--line);
+  }
+  .didaktik-cell:first-child{padding-left:0}
+  .didaktik-cell:last-child{padding-right:0;border-right:none}
+}
+
+.didaktik-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.12em;
+  color:var(--core);
+  margin-bottom:12px;
+}
+
+.didaktik-cell h4{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.4rem;
+  letter-spacing:-.02em;
+  margin-bottom:14px;
+  color:var(--ink);
+  font-variation-settings:"opsz" 36;
+}
+
+.didaktik-cell p{
+  color:var(--ink-soft);
+  font-size:.96rem;
+  line-height:1.6;
+}
+
+/* === STATUS === */
+.status{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:48px;
+}
+@media (min-width:880px){
+  .status{grid-template-columns:1.1fr 1fr;gap:72px}
+}
+
+.status-block h3{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.6rem;
+  letter-spacing:-.02em;
+  margin-bottom:18px;
+  color:var(--ink);
+  font-variation-settings:"opsz" 48;
+}
+
+.timeline{
+  list-style:none;
+  position:relative;
+}
+.timeline li{
+  padding:14px 0 14px 28px;
+  border-bottom:1px solid var(--line-soft);
+  position:relative;
+  font-size:.98rem;
+  color:var(--ink-soft);
+}
+.timeline li::before{
+  content:"";
+  position:absolute;
+  left:0;top:24px;
+  width:10px;height:1px;
+  background:var(--core);
+}
+.timeline li strong{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.74rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--core);
+  display:block;
+  margin-bottom:2px;
+  font-weight:500;
+}
+.timeline li.now strong{color:var(--ink)}
+.timeline li.now::before{background:var(--ink);height:2px;top:23px}
+
+/* === ASTRA === */
+.section.astra{
+  background:var(--ink);
+  color:var(--paper);
+  padding:120px 0;
+  position:relative;
+  overflow:hidden;
+}
+.section.astra::before{
+  content:"";
+  position:absolute;
+  top:-30%;right:-10%;
+  width:50%;
+  height:160%;
+  background:radial-gradient(ellipse at center, rgba(220,110,79,.18) 0%, transparent 65%);
+  pointer-events:none;
+}
+
+.section.astra .section-eyebrow{color:rgba(255,255,255,.55)}
+.section.astra .section-eyebrow::before{background:var(--core-soft)}
+.section.astra h2.section-title{color:var(--paper)}
+.section.astra h2.section-title em{color:var(--core-soft)}
+.section.astra .section-lede{color:rgba(251,247,237,.78)}
+
+.astra-roles{
+  margin-top:64px;
+  display:grid;
+  gap:32px;
+}
+@media (min-width:880px){
+  .astra-roles{grid-template-columns:1fr 1fr;gap:48px}
+}
+
+.role{
+  padding:36px;
+  border:1px solid rgba(251,247,237,.18);
+  border-radius:4px;
+  background:rgba(251,247,237,.03);
+  position:relative;
+}
+.role.primary{
+  border-color:rgba(220,110,79,.5);
+  background:rgba(220,110,79,.06);
+}
+.role-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--core-soft);
+  margin-bottom:14px;
+}
+.role.secondary .role-tag{color:rgba(251,247,237,.55)}
+
+.role h4{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.5rem;
+  letter-spacing:-.02em;
+  margin-bottom:14px;
+  color:var(--paper);
+  font-variation-settings:"opsz" 48;
+}
+.role p{
+  color:rgba(251,247,237,.78);
+  font-size:.98rem;
+  line-height:1.65;
+}
+.role ul{
+  list-style:none;
+  margin-top:14px;
+}
+.role ul li{
+  padding:8px 0 8px 20px;
+  position:relative;
+  font-size:.94rem;
+  color:rgba(251,247,237,.74);
+}
+.role ul li::before{
+  content:"·";
+  position:absolute;
+  left:6px;top:6px;
+  color:var(--core-soft);
+  font-weight:bold;
+  font-size:1.4rem;
+}
+
+/* === FOOTER === */
+footer{
+  padding:60px 0 80px;
+  border-top:1px solid var(--line);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.05em;
+  color:var(--muted);
+}
+footer .wrap{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:24px;
+}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+footer a:hover{border-bottom-color:var(--ink)}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero h1.title,
+.hero .lede,
+.hero .meta-row,
+.hero .eyebrow{
+  animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero .eyebrow{animation-delay:.05s}
+.hero h1.title{animation-delay:.15s}
+.hero .lede{animation-delay:.35s}
+.hero .meta-row{animation-delay:.5s}
+
+@media print{
+  .hero{min-height:auto;padding:24px 0 36px}
+  .section{padding:36px 0;page-break-inside:avoid}
+  .section.astra{background:#fff;color:var(--ink)}
+  .section.astra h2.section-title,
+  .section.astra h2.section-title em,
+  .section.astra .section-lede,
+  .section.astra .role h4,
+  .section.astra .role p{color:var(--ink) !important}
+  .pkg:hover,.pkg-link:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="mark"><span class="dot"></span>komtilkernen.dk</span>
+      <span>Projektpræsentation · Maj 2026</span>
+    </div>
+
+    <span class="eyebrow">Et undervisningsunivers med Inge Lehmann</span>
+
+    <h1 class="title">Kom til <em>kernen</em></h1>
+
+    <p class="lede">
+      Et sanseforstærket undervisningsunivers der binder Inge Lehmanns opdagelse af Jordens indre kerne sammen med fællesfaglig naturfagsprøve, gymnasie-SRP og videnskabshistorisk rollespil — fra hop på gulvet til kvantitativ analyse af rigtige seismogrammer.
+    </p>
+
+    <div class="meta-row">
+      <span>Forfatter<strong>Philip · Silkeborg Gymnasium</strong></span>
+      <span>Målgruppe<strong>Udskoling og gymnasium</strong></span>
+      <span>Fondsansøgning<strong>Novo Nordisk Fonden, sept. 2026</strong></span>
+      <span>Status<strong>Prototyper live · pre-pilot efterår 2026</strong></span>
+    </div>
+  </div>
+</header>
+
+<!-- IDEA -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">01 — Idéen</div>
+    <h2 class="section-title">Genoplev <em>opdagelsen</em>, ikke bare resultatet.</h2>
+    <p class="section-lede">
+      Inge Lehmanns videnskabelige gennembrud er på alle måder en særlig historie. Og hendes afgørende argumenter kan faktisk rekonstrueres af elever — med hjælp fra moderne metoder. Alligevel er Inge Lehmann og hendes gennembrydende idéer stort set ikke til stede i den danske skole. Det er et didaktisk hul, og det er også et kulturhistorisk: hun er repræsentant for en hel generation af kvindelige forskere, hvis arbejde aldrig blev en del af den fortælling vi giver videre. Det må vi ændre.
+    </p>
+    <p class="section-lede" style="margin-top:18px">
+      Naturvidenskabsundervisningen står i en dobbelt udfordring: Mange elever oplever stoffet som meningsløst, og AI fjerner rejsen fra spørgsmål til svar. <em>Kom til kernen</em> svarer ved at gøre Inge Lehmanns opdagelse af Jordens indre kerne (1936) til en konkret rejse — fra udskolingens hop på gulvet til gymnasiets analyse af rigtige strålegange.
+    </p>
+
+    <div class="pitch" style="grid-template-columns:1fr">
+      <div class="pitch-pillars" style="grid-template-columns:repeat(3, 1fr);gap:32px">
+        <div class="pillar">
+          <div class="pillar-num">RYGRAD</div>
+          <h4>Inge Lehmann som narrativ</h4>
+          <p>Dansk pioner i geofysik. Eneste danske naturvidenskabskvinde på en kommende pengeseddel (2028–29). Hendes metode er elegant og gennemskuelig — ideel som didaktisk omdrejningspunkt.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">METODE</div>
+          <h4>Sansning før symbolsprog</h4>
+          <p>Konkret rytme: åbent spørgsmål → 30 sek. fysisk handling → delt sanseoplevelse → fagligt stof. Induktiv undervisning struktureret med kriterier — forskningsforankret hos Bruner, Dewey, Immordino-Yang.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">SAMMENHÆNG</div>
+          <h4>Tre pakker, ét univers</h4>
+          <p>Fælles narrativ, fælles infrastruktur, fælles didaktisk grundgreb — fra 7. klasse til 3.g. Mobilseismografen er rød tråd. Lehmann er rygrad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAKKER -->
+<section class="section alt" id="pakker">
+  <div class="wrap">
+    <div class="section-eyebrow">02 — Pakkerne</div>
+    <h2 class="section-title">Tre pakker. <em>Ét sammenhængende</em> forløb.</h2>
+    <p class="section-lede">
+      Hver pakke står selvstændigt og kan adopteres af lærere uafhængigt af de andre. Men de er designet til at spille sammen: en 9.-klasse der har spillet rollespillet genkender narrativet, når de senere møder seismik-suiten i 1.g. Alle prototyper er live og kan testes nu.
+    </p>
+
+    <div class="packages">
+
+      <article class="pkg pkg-1">
+        <div class="pkg-side">
+          <div class="pkg-num">01</div>
+          <div class="pkg-tag">Rollespil · 9. klasse–gymnasium</div>
+        </div>
+        <div class="pkg-body">
+          <h3>Da jorden åbnede sig <em>— et videnskabshistorisk rollespil om Inge Lehmann</em></h3>
+          <div class="audience">Udskoling og gymnasium · dansk + historie + naturfag</div>
+          <p>
+            I <em>Da jorden åbnede sig</em> læser eleven ikke om Inge Lehmann — eleven besøger hende. Lehmann fortæller, eleven sorterer hendes papkort fra Murchison-skælvet 1929, og lærer at læse rå seismisk bevægelse som bølge, præcis som hun selv gjorde i syv år før gennembruddet.
+          </p>
+          <p>
+            Rollespillet er ikke en computerstol-oplevelse. Det er bygget som korte akter, og mellem akterne ligger fælles "lektier" — opgaver eleverne løser sammen, væk fra skærmen, før spillet kan fortsætte. Læreren følger klassens samlede rejse via et indbygget dashboard, så det aldrig bliver privat skærmtid, men et fælles klasseforløb. Spillet kulminerer hvor eleven får Lehmann til at forklare argumentet bag P′-artiklen, bygget oven på simulator-logikken fra <em>komtilkernen.dk/app</em>.
+          </p>
+          <div class="pkg-links">
+            <a class="pkg-link live" href="https://rollespil.komtilkernen.dk/" target="_blank" rel="noopener">rollespil.komtilkernen.dk</a>
+            <a class="pkg-link live" href="https://komtilkernen.dk/app?autoplay=1" target="_blank" rel="noopener">simulator (komtilkernen.dk/app)</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pkg pkg-2">
+        <div class="pkg-side">
+          <div class="pkg-num">02</div>
+          <div class="pkg-tag">Tværfaglig pakke · 7.–9. klasse</div>
+        </div>
+        <div class="pkg-body">
+          <h3>Lyt til Jorden med Inge Lehmann <em>— til fællesfaglig naturfagsprøve</em></h3>
+          <div class="audience">Udskoling · biologi + geografi + fysik/kemi</div>
+          <p>
+            Den fællesfaglige pakke til udskolingen, struktureret som en matrix med tre fag i hvert af fem temaer — i alt 15 dele, der kan kombineres som ét fællesfagligt forløb eller bruges enkeltvis. Designet med sanseforstærket indgang og 30-sekunders fysiske aktiviteter før det faglige sprog introduceres.
+          </p>
+          <p>
+            Hvert tema kobler hverdagsfænomener til Lehmanns metode: fra hvalsang og slinky-bølger til triangulering og magnetreception hos trækfugle. Pakken er designet så ikke-specialister kan løfte den.
+          </p>
+          <div class="pkg-links">
+            <a class="pkg-link live" href="./matrix.html" target="_blank" rel="noopener">15-spørgsmåls-matrix</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pkg pkg-3">
+        <div class="pkg-side">
+          <div class="pkg-num">03</div>
+          <div class="pkg-tag">Værktøjssuite · gymnasium</div>
+        </div>
+        <div class="pkg-body">
+          <h3>Seismik, jordskælv og pladetektonik <em>— en suite af værktøjer</em></h3>
+          <div class="audience">Gymnasium · naturgeografi + fysik + SRP/SOP</div>
+          <p>
+            En samling interaktive værktøjer til tematisk og caseorienteret arbejde med seismik, jordskælv og pladetektonik. Allerede live: epicenter-værktøj, pladetektonik-visualisering, tsunami-simulering og seismik-platform. Under udvikling: et 3D-værktøj der lader eleverne studere forkastningstyper og bølgemodeller for ikoniske jordskælv i geografisk kontekst.
+          </p>
+          <p>
+            Suiten kobler verdens førende forskningsdata (IRIS Syngine, Princeton ShakeMovie, GEUS) til dansk-sproget undervisning — og udvides med sonifikering og multisansende elementer, så seismiske bølger kan både ses og høres.
+          </p>
+          <div class="pkg-links">
+            <a class="pkg-link live" href="https://geo.sg.dk/geoseis/" target="_blank" rel="noopener">geoseis</a>
+            <a class="pkg-link live" href="https://geo.sg.dk/plade" target="_blank" rel="noopener">pladetektonik</a>
+            <a class="pkg-link live" href="https://geo.sg.dk/tsunamiwatch" target="_blank" rel="noopener">tsunamiwatch</a>
+            <a class="pkg-link live" href="https://geo.sg.dk/epicenter/" target="_blank" rel="noopener">epicenter</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- DIDAKTIK -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">03 — Det didaktiske grundgreb</div>
+    <h2 class="section-title">Sansning <em>før</em> symbolsprog.</h2>
+    <p class="section-lede">
+      Det didaktiske greb er ikke et lag der lægges på materialet — det er designet selv. En konkret rytme der gør det muligt for elever at møde stoffet kropsligt før det møder dem som tekst.
+    </p>
+
+    <div class="didaktik-grid">
+      <div class="didaktik-cell">
+        <div class="didaktik-num">RYTMEN</div>
+        <h4>Åbent spørgsmål → fysisk handling → fagligt stof</h4>
+        <p>Hvert tema starter med et spørgsmål eleven kan undres over, fortsætter med 30 sekunders fysisk aktivitet, og lander først derefter i symbolsproget. Eleven har erfaring at hænge sproget op på.</p>
+      </div>
+      <div class="didaktik-cell">
+        <div class="didaktik-num">FORANKRINGEN</div>
+        <h4>Naturvidenskabens ABC, Erkendelse 2</h4>
+        <p>"Jordens overflade og klima udgør et dynamisk system." Projektet forankrer sig i denne erkendelse og demonstrerer i konkret praksis hvordan elever kan opbygge den — gennem Lehmanns opdagelse, sanseforstærket eksperimentarbejde og fagligt korrekte data.</p>
+      </div>
+      <div class="didaktik-cell">
+        <div class="didaktik-num">RØDE TRÅDE</div>
+        <h4>Mobilseismograf og narrativ kontinuitet</h4>
+        <p>Sans Science-mobilseismografen kører allerede live på <em>geo.sg.dk/seismograf</em>. Den er rød tråd gennem alle pakker — fra klassens hop til kvantitativ måling i SRP. Eleverne lærer ét værktøj, der følger dem fra 7. klasse til 3.g.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-eyebrow">04 — Status og vej frem</div>
+    <h2 class="section-title">Hvor vi er, <em>og hvor vi vil hen.</em></h2>
+
+    <div class="status">
+      <div class="status-block">
+        <h3>Aktuel status</h3>
+        <p style="color:var(--ink-soft);margin-bottom:18px">
+          Projektets fundament er bygget gennem ansøgerens parallelle undervisningsplatforme. Alle tre pakker har fungerende prototyper. Næste skridt er at færdiggøre materialet, sikre samarbejdspartnere og pre-pilote i efteråret 2026 — før selve fondsansøgningen sendes.
+        </p>
+        <p style="color:var(--ink-soft)">
+          Den parallelle platform <em>Da himlen åbnede sig</em> (om Galileos opdagelser) demonstrerer den pædagogiske og tekniske tilgang fungerer. Materialet udgives under åben licens (CC BY 4.0 / MIT).
+        </p>
+      </div>
+      <div class="status-block">
+        <h3>Tidslinje</h3>
+        <ul class="timeline">
+          <li class="now"><strong>Maj 2026 · nu</strong>Materialet skitseret. Prototyper live. Samarbejdspartnere kontaktes.</li>
+          <li><strong>Juni–august 2026</strong>Færdig dokumentation. Aftaler med faglige partnere (GEUS, Rigsarkivet m.fl.).</li>
+          <li><strong>September 2026</strong>Ansøgning til Novo Nordisk Fonden indsendes.</li>
+          <li><strong>Efterår 2026</strong>Pre-pilot på Silkeborg Gymnasium og samarbejdsskoler.</li>
+          <li><strong>2027–28</strong>Udvikling, klasserumstest, lancering — koordineret med pengeseddel-lancering 2028.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASTRA -->
+<section class="section astra" id="astra">
+  <div class="wrap">
+    <div class="section-eyebrow">05 — Hvor ASTRA passer ind</div>
+    <h2 class="section-title">En naturlig <em>samarbejdsflade.</em></h2>
+    <p class="section-lede">
+      ASTRA og <em>Kom til kernen</em> deler grundlæggende mission: at bringe naturvidenskabens metode tæt på elever i den danske skole. Vi ser to mulige roller — den ene let, den anden mere ambitiøs. Begge er værd at tale om.
+    </p>
+
+    <div class="astra-roles">
+      <div class="role primary">
+        <div class="role-tag">Primær rolle · let tærskel</div>
+        <h4>Faglig sparringspartner og national forankring</h4>
+        <p>
+          Projektet forankrer sig i Naturvidenskabens ABC's Erkendelse 2 og er designet til at understøtte den fællesfaglige naturfagsprøve. ASTRAs blik på materialet — og adgang til lærernetværk og formidlingskanaler — vil gøre projektet stærkere.
+        </p>
+        <ul>
+          <li>Faglig sparring om didaktiske valg</li>
+          <li>Forankring i ABC og fællesfaglig naturfagsprøve</li>
+          <li>Adgang til ASTRAs lærer- og kursusnetværk</li>
+          <li>Mulig præsentation ved Naturvidenskabsfestivalen</li>
+        </ul>
+      </div>
+
+      <div class="role secondary">
+        <div class="role-tag">Sekundær mulighed · ved interesse</div>
+        <h4>Medansøger på Novo Nordisk-ansøgningen</h4>
+        <p>
+          Hvis ASTRA ser strategisk match, kunne en medansøger-rolle styrke ansøgningen markant — både fagligt og institutionelt. Det vil kræve nærmere afklaring af scope, opgavefordeling og økonomi, men er en mulighed vi gerne diskuterer åbent.
+        </p>
+        <ul>
+          <li>Fælles ansøgning til NNF, deadline september 2026</li>
+          <li>Klar arbejdsdeling og dedikerede leverancer</li>
+          <li>Mulig kobling til ASTRAs eksisterende programmer</li>
+          <li>EarthJump-event som perspektiv (2028)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Kom til kernen · Maj 2026</span>
+    <span><a href="https://komtilkernen.dk/">komtilkernen.dk</a> · <a href="https://geo.sg.dk/">geo.sg.dk</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
