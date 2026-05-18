@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex">
+<title>Da Jorden åbnede sig · Projektpræsentation</title>
+<meta name="description" content="Et videnskabshistorisk rollespil med Inge Lehmann — materialet, didaktikken og tankerne bag.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4efe4;
+  --paper:#fbf7ed;
+  --ink:#1d2620;
+  --ink-soft:#3a4a40;
+  --muted:#6c7a70;
+  --line:#dcd6c5;
+  --line-soft:#e8e2d2;
+  --core:#b94a2c;
+  --core-soft:#dc6e4f;
+  --mantle:#d99a4a;
+  --mantle-soft:#e8b87a;
+  --crust:#3a6b6e;
+  --crust-soft:#5a8e91;
+  --accent:#83cbd4;
+  --shadow-sm:0 6px 18px rgba(40,52,44,.06);
+  --shadow:0 22px 60px rgba(40,52,44,.10);
+  --shadow-lg:0 36px 90px rgba(40,52,44,.14);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  font-feature-settings:'ss01','ss02','kern';
+  overflow-x:hidden;
+}
+
+.wrap{width:min(1180px,calc(100% - 48px));margin:0 auto}
+
+/* === HERO === */
+.hero{
+  position:relative;
+  padding:32px 0 72px;
+  overflow:hidden;
+  background:var(--bg);
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent 0%, var(--line) 12%, var(--line) 88%, transparent 100%);
+}
+
+.hero .wrap{position:relative;z-index:2}
+
+.hero-image{
+  margin:56px 0 0;
+}
+.hero-image a{
+  display:block;
+  transition:opacity .22s ease;
+}
+.hero-image a:hover{
+  opacity:.92;
+}
+.hero-image img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.hero-image-caption{
+  margin-top:16px;
+  text-align:center;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.06em;
+  color:var(--muted);
+}
+.hero-image-caption a{
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--core);
+  padding-bottom:2px;
+}
+.hero-image-caption a:hover{
+  color:var(--core);
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:96px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.topbar .mark{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.topbar .mark .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--core);
+  box-shadow:0 0 0 3px rgba(185,74,44,.15);
+}
+.topbar a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.topbar a:hover{color:var(--ink);border-color:var(--ink)}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.82rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--core);
+  margin-bottom:32px;
+  display:inline-block;
+  border-top:1px solid var(--core);
+  border-bottom:1px solid var(--core);
+  padding:8px 0;
+}
+
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:clamp(2.6rem, 6vw, 5rem);
+  line-height:.95;
+  letter-spacing:-.035em;
+  color:var(--ink);
+  margin-bottom:32px;
+  font-variation-settings:"opsz" 96;
+  max-width:14ch;
+}
+
+h1.title em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--core);
+}
+
+.lede{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-size:clamp(1.25rem, 2vw, 1.55rem);
+  line-height:1.5;
+  color:var(--ink-soft);
+  max-width:62ch;
+  margin-bottom:48px;
+  font-variation-settings:"opsz" 24;
+}
+
+.meta-row{
+  display:flex;
+  gap:36px;
+  flex-wrap:wrap;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.05em;
+  color:var(--muted);
+}
+.meta-row span strong{
+  display:block;
+  color:var(--ink);
+  font-weight:600;
+  font-size:.92rem;
+  margin-top:4px;
+  font-family:'IBM Plex Sans',sans-serif;
+  letter-spacing:0;
+}
+
+/* === SECTIONS === */
+.section{padding:100px 0;position:relative}
+.section.alt{background:var(--paper)}
+.section.alt::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:var(--line);
+}
+
+.section-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.section-eyebrow::before{
+  content:"";
+  display:block;
+  width:32px;height:1px;
+  background:var(--core);
+}
+
+h2.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-size:clamp(2.4rem, 5.5vw, 4.4rem);
+  line-height:.96;
+  letter-spacing:-.03em;
+  color:var(--ink);
+  max-width:18ch;
+  margin-bottom:28px;
+  font-variation-settings:"opsz" 96;
+}
+
+h2.section-title em{
+  font-style:italic;
+  color:var(--core);
+}
+
+.section-lede{
+  font-family:'Fraunces',serif;
+  font-size:1.18rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+  max-width:64ch;
+  font-variation-settings:"opsz" 24;
+}
+
+/* === SCREENSHOT === */
+.section.screenshot{padding:72px 0;background:var(--paper)}
+.screenshot-frame{
+  margin-top:40px;
+  max-width:980px;
+  margin-left:auto;
+  margin-right:auto;
+  border:1px solid var(--line);
+  border-radius:6px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+.screenshot-frame img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.screenshot-frame .placeholder{
+  aspect-ratio:16/10;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:10px;
+  background:
+    repeating-linear-gradient(45deg, rgba(185,74,44,.03), rgba(185,74,44,.03) 14px, transparent 14px, transparent 28px),
+    linear-gradient(180deg, rgba(217,154,74,.06), rgba(185,74,44,.04));
+  color:var(--muted);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.85rem;
+  letter-spacing:.06em;
+  padding:32px;
+  text-align:center;
+}
+.screenshot-frame .placeholder strong{
+  display:block;
+  color:var(--ink-soft);
+  font-size:1.1rem;
+  letter-spacing:.02em;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:400;
+  margin-bottom:4px;
+}
+.screenshot-caption{
+  margin-top:18px;
+  text-align:center;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.06em;
+  color:var(--muted);
+}
+.screenshot-caption a{
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+}
+.screenshot-caption a:hover{border-bottom-color:var(--ink)}
+
+/* === PITCH PILLARS === */
+.pitch{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:56px;
+  margin-top:64px;
+}
+
+.pitch-pillars{
+  display:grid;
+  gap:24px;
+}
+@media (min-width:780px){
+  .pitch-pillars{grid-template-columns:repeat(3, 1fr);gap:32px}
+}
+.pillar{
+  border-top:1px solid var(--line);
+  padding-top:20px;
+}
+.pillar-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.74rem;
+  letter-spacing:.12em;
+  color:var(--core);
+  margin-bottom:8px;
+}
+.pillar h4{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:1.18rem;
+  letter-spacing:-.01em;
+  margin-bottom:6px;
+  color:var(--ink);
+}
+.pillar p{
+  color:var(--ink-soft);
+  font-size:.96rem;
+  line-height:1.55;
+}
+
+/* === ACTS === */
+.acts{
+  margin-top:64px;
+  display:grid;
+  gap:20px;
+}
+.act{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+  padding:28px 0;
+  border-top:1px solid var(--line);
+}
+@media (min-width:780px){
+  .act{grid-template-columns:200px 1fr;gap:48px;align-items:start}
+}
+.act-num{
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:2.4rem;
+  line-height:1;
+  letter-spacing:-.03em;
+  color:var(--core);
+  font-variation-settings:"opsz" 96;
+}
+.act-num small{
+  display:block;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:6px;
+  font-weight:400;
+}
+.act-body h4{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.3rem;
+  letter-spacing:-.02em;
+  margin-bottom:10px;
+  color:var(--ink);
+  font-variation-settings:"opsz" 48;
+}
+.act-body h4 em{font-style:italic;color:var(--ink-soft);font-weight:400}
+.act-body p{
+  color:var(--ink-soft);
+  font-size:.98rem;
+  line-height:1.6;
+}
+
+/* === MECHANICS GRID === */
+.mechanics{
+  margin-top:56px;
+  display:grid;
+  gap:24px;
+}
+@media (min-width:780px){
+  .mechanics{grid-template-columns:1fr 1fr;gap:32px}
+}
+.mech{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:28px 28px 24px;
+  position:relative;
+}
+.mech::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:var(--core);
+}
+.mech h4{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.18rem;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  margin-bottom:10px;
+  font-variation-settings:"opsz" 36;
+}
+.mech p{
+  color:var(--ink-soft);
+  font-size:.94rem;
+  line-height:1.6;
+}
+
+/* === DIDAKTIK === */
+.didaktik-grid{
+  margin-top:64px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+  border-top:1px solid var(--line);
+}
+@media (min-width:780px){
+  .didaktik-grid{grid-template-columns:repeat(3, 1fr)}
+}
+
+.didaktik-cell{
+  padding:36px 0;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+@media (min-width:780px){
+  .didaktik-cell{
+    padding:40px 32px;
+    border-bottom:none;
+    border-right:1px solid var(--line);
+  }
+  .didaktik-cell:first-child{padding-left:0}
+  .didaktik-cell:last-child{padding-right:0;border-right:none}
+}
+
+.didaktik-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.12em;
+  color:var(--core);
+  margin-bottom:12px;
+}
+
+.didaktik-cell h4{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.4rem;
+  letter-spacing:-.02em;
+  margin-bottom:14px;
+  color:var(--ink);
+  font-variation-settings:"opsz" 36;
+}
+
+.didaktik-cell p{
+  color:var(--ink-soft);
+  font-size:.96rem;
+  line-height:1.6;
+}
+
+/* === TECH === */
+.tech-grid{
+  margin-top:56px;
+  display:grid;
+  gap:18px;
+}
+.tech-row{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line-soft);
+}
+@media (min-width:780px){
+  .tech-row{grid-template-columns:200px 1fr;gap:32px;align-items:start}
+}
+.tech-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--core);
+}
+.tech-value{
+  color:var(--ink-soft);
+  font-size:.98rem;
+  line-height:1.6;
+}
+.tech-value strong{color:var(--ink);font-weight:600}
+
+/* === STATUS === */
+.status{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:48px;
+}
+@media (min-width:880px){
+  .status{grid-template-columns:1.1fr 1fr;gap:72px}
+}
+
+.status-block h3{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:1.6rem;
+  letter-spacing:-.02em;
+  margin-bottom:18px;
+  color:var(--ink);
+  font-variation-settings:"opsz" 48;
+}
+
+.timeline{
+  list-style:none;
+  position:relative;
+}
+.timeline li{
+  padding:14px 0 14px 28px;
+  border-bottom:1px solid var(--line-soft);
+  position:relative;
+  font-size:.98rem;
+  color:var(--ink-soft);
+}
+.timeline li::before{
+  content:"";
+  position:absolute;
+  left:0;top:24px;
+  width:10px;height:1px;
+  background:var(--core);
+}
+.timeline li strong{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.74rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--core);
+  display:block;
+  margin-bottom:2px;
+  font-weight:500;
+}
+.timeline li.now strong{color:var(--ink)}
+.timeline li.now::before{background:var(--ink);height:2px;top:23px}
+
+/* === CTA LINK === */
+.play-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:24px;
+  padding:14px 22px;
+  background:var(--ink);
+  color:var(--paper);
+  text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.82rem;
+  letter-spacing:.06em;
+  border-radius:4px;
+  transition:all .22s ease;
+}
+.play-cta:hover{
+  background:var(--core);
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-sm);
+}
+.play-cta::after{content:"→";font-family:'IBM Plex Sans',sans-serif}
+
+/* === FOOTER === */
+footer{
+  padding:60px 0 80px;
+  border-top:1px solid var(--line);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;
+  letter-spacing:.05em;
+  color:var(--muted);
+}
+footer .wrap{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:24px;
+}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+footer a:hover{border-bottom-color:var(--ink)}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero h1.title,
+.hero .lede,
+.hero .meta-row,
+.hero .eyebrow{
+  animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero .eyebrow{animation-delay:.05s}
+.hero h1.title{animation-delay:.15s}
+.hero .lede{animation-delay:.35s}
+.hero .meta-row{animation-delay:.5s}
+
+@media print{
+  .hero{min-height:auto;padding:24px 0 36px}
+  .section{padding:36px 0;page-break-inside:avoid}
+  .screenshot-frame{box-shadow:none}
+  .play-cta{background:none;color:var(--ink);border:1px solid var(--ink);box-shadow:none}
+  .play-cta:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="mark"><span class="dot"></span>komtilkernen.dk · projekt</span>
+      <span>Projektpræsentation · Maj 2026</span>
+    </div>
+
+    <span class="eyebrow">Kom ind til kernen med Inge Lehmann</span>
+
+    <h1 class="title">Da Jorden <em>åbnede sig</em></h1>
+
+    <p class="lede">
+      Eleverne hives ind i et videnskabshistorisk rollespil, hvor de gennem deres valg får indsigt i den videnskabelige og personlige historie — gennem samtaler, flashbacks og opgaver med Inge Lehmann. Imellem hver "session" får eleverne små lektier og aktiviteter de skal løse og undersøge. Og det er ikke ligegyldigt hvad de gør…
+    </p>
+
+    <div class="meta-row">
+      <span>Forfatter<strong>Philip Kruse Jakobsen · Sans Science · Silkeborg Gymnasium</strong></span>
+      <span>Format<strong>Web-rollespil</strong></span>
+      <span>Målgrupper<strong>Ungdomsuddannelse og udskoling — to versioner</strong></span>
+    </div>
+
+    <div class="hero-image">
+      <a href="https://rollespil.komtilkernen.dk/?key=lehmann2026" target="_blank" rel="noopener" style="display:block">
+        <img src="./rollespil-screenshot.jpg" alt="Skærmbillede fra rollespillet Da Jorden åbnede sig — eleven står foran Inge Lehmanns hus en eftermiddag i 1980'erne. Døren lyser med et seismologisk symbol.">
+      </a>
+      <p class="hero-image-caption">
+        <a href="https://rollespil.komtilkernen.dk/?key=lehmann2026" target="_blank" rel="noopener">Prøv demoen</a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<!-- IDEA -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">01 — Idéen</div>
+    <h2 class="section-title">Genoplev <em>opdagelsen</em>, ikke bare resultatet.</h2>
+    <p class="section-lede">
+      Inge Lehmann opdagede Jordens indre kerne i 1936. Hendes argument er elegant, gennemskueligt og — for en moderne elev med adgang til de samme data — faktisk muligt at rekonstruere. Alligevel er Lehmann og hendes gennembrud stort set ikke til stede i den danske skole. Det er et didaktisk hul, og det er også et kulturhistorisk: hun er repræsentant for en hel generation af kvindelige forskere, hvis arbejde aldrig blev en del af den fortælling vi giver videre.
+    </p>
+    <p class="section-lede" style="margin-top:18px">
+      Naturvidenskabsundervisningen står samtidig i en dobbelt udfordring: Mange elever oplever stoffet som meningsløst, og AI fjerner rejsen fra spørgsmål til svar. <em>Da jorden åbnede sig</em> svarer ved at gøre opdagelsen til en konkret rejse — eleven sidder over for Lehmann, sorterer hendes papkort, lytter til hendes tørre humor, og må selv navigere argumentet. Rollespillet er ikke pynt på et naturfagligt indhold; det er det format der gør indholdet muligt at gribe.
+    </p>
+
+    <div class="pitch">
+      <div class="pitch-pillars">
+        <div class="pillar">
+          <div class="pillar-num">RYGRAD</div>
+          <h4>Inge Lehmann som hovedperson</h4>
+          <p>Dansk pioner i geofysik. Modtog Bowie-medaljen, geofysikkens fineste pris, som første kvinde nogensinde (1971). Eneste danske naturvidenskabskvinde på en kommende pengeseddel (2028–29). Hendes metode er elegant og gennemskuelig — ideel som didaktisk omdrejningspunkt.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">METODE</div>
+          <h4>Eleven som assistent</h4>
+          <p>Eleven spiller ikke Lehmann — eleven besøger hende. Som hendes unge assistent sorterer eleven hendes papirer, stiller spørgsmål, og navigerer modstandere i flashbacks (Gutenberg, Jeffreys, Nørlund). Eleven oplever Lehmann udefra, ikke ved billig identifikation.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">SAMMENHÆNG</div>
+          <h4>Historien i historien</h4>
+          <p>Rollespillet rummer kvindernes kamp for plads i videnskaben, Nørlund-konflikten på Geodætisk Institut, Den Kolde Krigs koblinger mellem seismologi og atomvåben-overvågning, og den sene danske anerkendelse. Naturfag åbnes mod dansk, historie og samfundsfag.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLLESPIL I DETALJER -->
+<section class="section alt" id="rollespil">
+  <div class="wrap">
+    <div class="section-eyebrow">02 — Rollespillet</div>
+    <h2 class="section-title">Et helt liv. <em>Ét gennembrud.</em></h2>
+    <p class="section-lede">
+      Spillet er bygget som en rammefortælling i nutid med flashbacks tilbage til Lehmanns liv. Hver gang eleven hjælper den gamle Lehmann med en opgave, åbner hun et nyt minde — og eleven træder ind i flashbacket som en historisk modspiller. På den måde møder eleven hende fra alle sider: hendes støttere, hendes skeptikere, hendes redaktører, hendes interviewere. Rollespillet er ikke en computerstol-oplevelse. Mellem akterne ligger fælles "lektier" — opgaver eleverne løser sammen, væk fra skærmen, før spillet kan fortsætte. Læreren følger klassens samlede rejse via et indbygget dashboard, så det aldrig bliver privat skærmtid, men et fælles klasseforløb.
+    </p>
+
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:48px">
+      Arbejdsskitse — antal og opdeling af akter udvikles i projektet
+    </p>
+
+    <div class="acts">
+
+      <div class="act">
+        <div class="act-num">01<small>Nutid · 1980'erne</small></div>
+        <div class="act-body">
+          <h4>Opslagsbogen <em>— eleven træder ind hos Lehmann</em></h4>
+          <p>Eleven banker på hos Inge Lehmann en eftermiddag i 1980'erne. Hun er gammel nu, sidder med en bunke papkort, breve og seismogrammer, og beder om hjælp. "Et lille spørgsmål til dig først — ved du hvor dybt et menneske er kommet ned i Jorden?" Det er prologen, og den kan spilles nu i demoversionen.</p>
+        </div>
+      </div>
+
+      <div class="act">
+        <div class="act-num">02<small>Flashbacks · 1910'erne–1928</small></div>
+        <div class="act-body">
+          <h4>Cambridge og København <em>— forberedelsen til en opdagelse</em></h4>
+          <p>Lehmann som ung studerende på Cambridge, hvor kvinder skulle gå på den anden side af gangen. Hannah Adlers fællesskole i København. Geodætisk Institut, hvor hendes chef Niels Erik Nørlund hellere ville have hende til at lave administrative bulletiner end forskning. Eleven spiller den mandlige medstuderende, kollegaen, eller Nørlund selv — og må navigere konflikten indefra.</p>
+        </div>
+      </div>
+
+      <div class="act">
+        <div class="act-num">03<small>Flashbacks · 1929–1936</small></div>
+        <div class="act-body">
+          <h4>P′ <em>— da papkortene begyndte at tale</em></h4>
+          <p>Et jordskælv i New Zealand, 17. juni 1929. Lehmann begynder at se signaler på seismogrammerne hvor ingen forventede signaler. Syv års arbejde med papkort, brevveksling med Gutenberg og Jeffreys, konferenceforhandling 1936. Eleven sorterer papkortene, læser brevene, spiller skiftevis Gutenberg og Jeffreys — alle med deres egne legitime grunde til at være skeptiske. Spillet kulminerer hvor eleven får Lehmann til at formulere argumentet bag den treside-lange artikel "P′".</p>
+        </div>
+      </div>
+
+      <div class="act">
+        <div class="act-num">04<small>Flashbacks · 1950'erne–1971 + nutid</small></div>
+        <div class="act-body">
+          <h4>Det dybe og det fjerne <em>— anerkendelsen, langsomt</em></h4>
+          <p>Atomvåben-overvågning under Den Kolde Krig — seismologien bliver pludselig politisk. Et journalistinterview i 1955. En generationssamtale med en ung kvindelig studerende i 1965. Bowie-medaljen i 1971 og Francis Birchs takketale om "black art". Tilbage i nutidsrammen: eleven har sorteret Lehmanns liv. Lehmann fortæller om det inderste i sin egen historie — og om det inderste i Jorden. De to bliver én slutscene.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-lede" style="margin-top:64px">
+      Den endelige version udvikles i <strong>to varianter</strong> — en til <em>ungdomsuddannelser</em> og en til <em>udskolingen</em>. Demoen er aktuelt tænkt til ungdomsuddannelsesniveauet. Begge versioner får flere veje rundt afhængig af elevens valg, men alt vil være historisk korrekt — der er klare faglige hårde krav, og fortællingen tilpasser sig elevens nysgerrighed snarere end omvendt.
+    </p>
+  </div>
+</section>
+
+<!-- DIDAKTIK -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">03 — Didaktiske overvejelser</div>
+    <h2 class="section-title">Hvorfor netop <em>et rollespil</em>.</h2>
+
+    <div style="margin-top:48px;max-width:64ch">
+      <p style="font-family:'Fraunces',serif;font-size:1.18rem;line-height:1.65;color:var(--ink-soft);margin-bottom:24px;font-variation-settings:'opsz' 24">
+        Når vi har valgt rollespillet som format, er det fordi Inge Lehmanns historie ikke kan reduceres til en faktaboks. Hendes argument bag opdagelsen af Jordens indre kerne er elegant og gennemskueligt — men det opstod i et liv. Det opstod i Cambridge, hvor hun måtte gå på den anden side af gangen. Det opstod i en strid med hendes chef Niels Erik Nørlund, der hellere ville have hende til at lave administrative bulletiner end forskning. Det opstod over syv års arbejde med papkort efter et jordskælv i New Zealand i 1929. Den slags historier er bærere af viden — ikke kun rammer om den. Det er den narrative erkendelsesform Bruner skrev om: en selvstændig vej til forståelse, sidestillet med den logisk-videnskabelige, ikke en pædagogisk indpakning af den.
+      </p>
+
+      <p style="font-family:'Fraunces',serif;font-size:1.18rem;line-height:1.65;color:var(--ink-soft);margin-bottom:24px;font-variation-settings:'opsz' 24">
+        Men vi har lagt en bevidst begrænsning ind: eleven <em>er ikke</em> Lehmann. Eleven besøger hende som hendes unge assistent — og i flashbacks træder eleven ind som hendes mod-rolle. Som Gutenberg, der skeptisk læser hendes manuskript. Som Nørlund, der bekymret beder hende om at fokusere. Som journalisten i 1955, der ikke ved hvad han spørger om. Det forhindrer den billige identifikation ("jeg er Lehmann, derfor er jeg klog") og tvinger eleven til at <em>forhandle med</em> hendes positioner. Den faglige indsigt opstår i mødet mellem elevens egen tænkning og en historisk modstand der ikke er karikeret. Det er en lille men afgørende drejning — og den viser at indlevelse og naturvidenskabelig erkendelse ikke står i modsætning, men kan arbejde sammen.
+      </p>
+
+      <p style="font-family:'Fraunces',serif;font-size:1.18rem;line-height:1.65;color:var(--ink-soft);font-variation-settings:'opsz' 24">
+        Rollespillet er et konkret eksempel på det vi kalder undervisning med SANS — den didaktiske tilgang vi har udfoldet på <a href="https://sans.science/" style="color:var(--ink);border-bottom:1px solid var(--core)">sans.science</a>. De fire dimensioner aktiveres samtidigt: <em>følelser</em> i mødet med en gammel kvinde der har levet et helt liv, <em>fantasi</em> i flashbacks og rolleskifter, <em>fortællinger</em> som det format der bærer det faglige hjem, og <em>fællesskab</em> i de fælles "lektier" mellem akterne, hvor klassen samles om papkortene og argumentet væk fra skærmen. Det er klassen som motor — ikke skærmen som privat oplevelse. Forbundethed — til Lehmann, til hendes opdagelse, til hinanden — opstår netop fordi alle fire er i spil på én gang.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Da Jorden åbnede sig · Kom til kernen · Maj 2026</span>
+    <span><a href="https://komtilkernen.dk/">komtilkernen.dk</a> · <a href="https://sans.science/">sans.science</a> · <a href="mailto:philip@sans.science">philip@sans.science</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
