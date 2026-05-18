@@ -47,26 +47,9 @@ body{
 /* === HERO === */
 .hero{
   position:relative;
-  padding:24px 0 80px;
+  padding:24px 0 32px;
   overflow:hidden;
-  background-color:var(--bg);
-  background-image:
-    linear-gradient(to right, var(--bg) 0%, rgba(244,239,228,.78) 38%, rgba(244,239,228,.45) 60%, rgba(244,239,228,.30) 100%),
-    url('./seismik-baggrund.jpg');
-  background-position:right center;
-  background-repeat:no-repeat;
-  background-size:auto 130%;
-}
-
-@media (max-width:780px){
-  .hero{
-    background-image:
-      linear-gradient(to bottom, var(--bg) 0%, rgba(244,239,228,.85) 30%, rgba(244,239,228,.65) 100%),
-      url('./seismik-baggrund.jpg');
-    background-position:center bottom;
-    background-size:140% auto;
-    padding-bottom:200px;
-  }
+  background:var(--bg);
 }
 
 .hero::after{
@@ -79,29 +62,37 @@ body{
 
 .hero .wrap{position:relative;z-index:2}
 
-.hero-play{
-  margin-top:32px;
+.hero-image{
+  margin:32px 0 0;
 }
-.hero-play a{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
+.hero-image a{
+  display:block;
+  transition:opacity .22s ease;
+}
+.hero-image a:hover{
+  opacity:.92;
+}
+.hero-image img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.hero-image-caption{
+  margin-top:16px;
+  text-align:center;
   font-family:'IBM Plex Mono',monospace;
-  font-size:.82rem;
+  font-size:.78rem;
   letter-spacing:.06em;
+  color:var(--muted);
+}
+.hero-image-caption a{
   color:var(--ink);
   text-decoration:none;
-  padding:12px 18px;
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:4px;
-  transition:all .22s ease;
+  border-bottom:1px solid var(--core);
+  padding-bottom:2px;
 }
-.hero-play a:hover{
-  background:var(--ink);
-  color:var(--paper);
-  border-color:var(--ink);
-  transform:translateY(-1px);
+.hero-image-caption a:hover{
+  color:var(--core);
 }
 
 .topbar{
@@ -659,8 +650,13 @@ footer a:hover{border-bottom-color:var(--ink)}
       <span>Målgrupper<strong>Ungdomsuddannelse og udskoling — to versioner</strong></span>
     </div>
 
-    <div class="hero-play">
-      <a href="https://rollespil.komtilkernen.dk/?key=lehmann2026" target="_blank" rel="noopener">Prøv demoen →</a>
+    <div class="hero-image">
+      <a href="https://rollespil.komtilkernen.dk/?key=lehmann2026" target="_blank" rel="noopener" style="display:block">
+        <img src="./rollespil-screenshot.jpg" alt="Skærmbillede fra rollespillet Da Jorden åbnede sig — eleven står foran Inge Lehmanns hus en eftermiddag i 1980'erne. Døren lyser med et seismologisk symbol.">
+      </a>
+      <p class="hero-image-caption">
+        <a href="https://rollespil.komtilkernen.dk/?key=lehmann2026" target="_blank" rel="noopener">Prøv demoen</a>
+      </p>
     </div>
   </div>
 </header>
